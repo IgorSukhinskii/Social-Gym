@@ -12,7 +12,7 @@
     tools:showIn="@layout/activity_main">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/helloworld_string" />
@@ -21,24 +21,24 @@
         android:text="@string/GlebsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/textViewAll"
         android:layout_alignParentStart="true"
         android:layout_marginTop="52dp"
-        android:id="@+id/textView1" />
+        android:id="@+id/textViewGleb" />
 
     <TextView
         android:text="@string/Olga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/textViewGleb"
         android:layout_alignParentStart="true"
         android:layout_marginTop="21dp"
-        android:id="@+id/textView1" />
+        android:id="@+id/textViewOlga" />
     <TextView
         android:text="Go ahead!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/textViewOlga"
         android:layout_marginTop="21dp"
-        android:id="@+id/textView2" />
+        android:id="@+id/textViewNastya" />
 </RelativeLayout>
