@@ -4,4 +4,7 @@
     <string name="helloworld_string">КОТОНАВТЫ</string>
     <string name="Olga">Оленька</string>
     <string name="GlebsName">Глеб</string>
+    <string name="dialog_action_ok">OK</string>
+    <string name="dialog_error_title">Error</string>
+    <string name="error_loading_events">An error has occured while loading events</string>
 </resources>

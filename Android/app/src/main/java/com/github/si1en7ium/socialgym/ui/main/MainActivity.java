@@ -5,15 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.github.si1en7ium.socialgym.R;
-import com.github.si1en7ium.socialgym.models.EventModel;
+import com.github.si1en7ium.socialgym.models.Event;
 import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
+import com.github.si1en7ium.socialgym.util.DialogFactory;
 
 import java.util.List;
 
@@ -86,12 +86,13 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public void showEvents(List<EventModel> events) {
+    public void showEvents(List<Event> events) {
 
     }
 
     @Override
     public void showError() {
-
+        DialogFactory.createGenericErrorDialog(this, R.string.error_loading_events)
+                .show();
     }
 }
