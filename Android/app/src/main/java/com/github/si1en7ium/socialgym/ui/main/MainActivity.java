@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityComponent().inject(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
