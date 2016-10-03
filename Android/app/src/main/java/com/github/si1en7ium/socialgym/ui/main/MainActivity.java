@@ -5,15 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.github.si1en7ium.socialgym.R;
-import com.github.si1en7ium.socialgym.models.EventModel;
+import com.github.si1en7ium.socialgym.models.Event;
 import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
+import com.github.si1en7ium.socialgym.util.DialogFactory;
 
 import java.util.List;
 
@@ -21,6 +23,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
@@ -28,9 +31,11 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             "com.github.si1en7ium.socialgym.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
 
     @Inject MainPresenter mainPresenter;
+    @Inject EventsAdapter eventsAdapter;
 
     @BindView(R.id.fab) FloatingActionButton fab;
     @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.eventsList) RecyclerView eventsListView;
 
     /**
      * Return an Intent to start this Activity.
@@ -47,7 +52,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityComponent().inject(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -58,6 +63,9 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                         .setAction("Action", null).show();
             }
         });
+
+        eventsListView.setAdapter(eventsAdapter);
+        eventsListView.setLayoutManager(new LinearLayoutManager(this));
 
         mainPresenter.attachView(this);
         mainPresenter.loadEvents();
@@ -86,12 +94,15 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public void showEvents(List<EventModel> events) {
-
+    public void showEvents(List<Event> events) {
+        Timber.i("Showing events");
+        eventsAdapter.setEvents(events);
+        eventsAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void showError() {
-
+        DialogFactory.createGenericErrorDialog(this, R.string.error_loading_events)
+                .show();
     }
 }
