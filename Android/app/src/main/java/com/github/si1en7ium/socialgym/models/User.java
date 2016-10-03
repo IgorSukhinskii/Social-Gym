@@ -12,7 +12,7 @@ public abstract class User {
     public abstract Builder toBuilder();
 
     public static Builder builder() {
-        return new AutoValue_User.Builder();
+        return new AutoValue_User.Builder().avatarUrl("");
     }
 
     public static TypeAdapter<User> typeAdapter(Gson gson) {
@@ -20,7 +20,7 @@ public abstract class User {
     }
 
     @AutoValue.Builder
-    abstract static class Builder {
+    public abstract static class Builder {
         public abstract Builder name(String name);
         public abstract Builder avatarUrl(String avatarUrl);
 
