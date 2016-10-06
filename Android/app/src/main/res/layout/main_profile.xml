@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:srcCompat="@mipmap/sample_profile_picture"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:id="@+id/imageProfile"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/profile_imageDescription" />
+
+    <TextView
+        android:text="@string/profile_gender_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textGenderAge"
+        android:layout_below="@+id/textName"
+        android:layout_alignStart="@+id/textName"
+        android:layout_marginTop="0dp" />
+
+    <TextView
+        android:text="@string/profile_activities_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textGenderAge"
+        android:layout_alignStart="@+id/textGenderAge"
+        android:layout_marginTop="40dp"
+        android:id="@+id/textActivities"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:fontFamily="sans-serif"
+        android:textSize="14sp"
+        android:textColor="?android:attr/textColorSecondary" />
+
+    <TextView
+        android:text="@string/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="?android:attr/textColorPrimary"
+        android:layout_below="@+id/imageProfile"
+        android:layout_alignStart="@+id/imageProfile" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:layout_marginTop="0dp"
+        android:id="@+id/editAboutMe"
+        android:text="@string/profile_aboutme"
+        android:layout_below="@id/textAboutMeLabel"
+        android:layout_alignStart="@+id/textActivities"
+        android:labelFor="@id/textAboutMeLabel"
+        android:hint="@string/profile_aboutmeHint" />
+
+    <TextView
+        android:text="@string/profile_aboutmelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textActivities"
+        android:layout_alignStart="@+id/editAboutMe"
+        android:layout_marginTop="60dp"
+        android:id="@+id/textAboutMeLabel" />
+
+    <TextView
+        android:text="@string/profile_eventsCreated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageProfile"
+        android:layout_toEndOf="@id/imageProfile"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="31dp"
+        android:id="@+id/textEventsCreated"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="@string/profile_eventsVisited"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:id="@+id/textEventsVisited"
+        android:layout_below="@+id/textEventsCreated"
+        android:layout_alignStart="@+id/textEventsCreated"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="@string/profile_activities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textActivities"
+        android:layout_alignStart="@+id/textActivities"
+        android:layout_marginTop="5dp"
+        android:id="@+id/textView"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="18sp" />
+
+</RelativeLayout>
