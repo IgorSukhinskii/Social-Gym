@@ -13,12 +13,22 @@ def events():
     result = [
         {
             "title": "Jogging with friends!",
-            "description": "We are going to get together and jog-jog-jog! Don't be late.💩",
+            "description": "We are going to get together and jog-jog-jog-jog-jog-jog-jog! Don't be late.💩",
             "creator": user,
             "sportKind": "JOGGING",
             "dateTime": "2016-10-07T10:50:00Z",
-            "duration": "PT6600.0S"
-        } for i in range(15)
+            "duration": "PT6600.0S",
+            "imageUrl": "http://edu.glavsprav.ru/_static/_profiles/499/glav.jpg"
+        },
+        {
+            "title": "Running without friends😊",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "creator": user,
+            "sportKind": "RUNNING",
+            "dateTime": "2016-10-07T12:50:00Z",
+            "duration": "PT6600.0S",
+            "imageUrl": "http://www.livelappeenranta.fi/sites/default/files/lut1.jpg"
+        }
     ]
     return json.dumps(result)
 
