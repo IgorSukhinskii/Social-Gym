@@ -4,8 +4,6 @@ import com.google.auto.value.AutoValue;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 
-import org.joda.time.DateTime;
-import org.joda.time.Interval;
 import org.joda.time.ReadableDateTime;
 import org.joda.time.ReadableDuration;
 
@@ -17,6 +15,7 @@ public abstract class Event {
     public abstract SportKind sportKind();
     public abstract ReadableDateTime dateTime();
     public abstract ReadableDuration duration();
+    public abstract String imageUrl();
 
     public abstract Builder toBuilder();
 
@@ -37,6 +36,7 @@ public abstract class Event {
         public abstract Builder sportKind(SportKind sportKind);
         public abstract Builder dateTime(ReadableDateTime dateTime);
         public abstract Builder duration(ReadableDuration duration);
+        public abstract Builder imageUrl(String imageUrl);
 
         public abstract Event build();
     }
