@@ -4,4 +4,14 @@
     <string name="helloworld_string">КОТОНАВТЫ</string>
     <string name="Olga">Оленька</string>
     <string name="GlebsName">Глеб</string>
+    <string name="profile_gender_age">Male, 30</string>
+    <string name="profile_activities_label">Sport activities</string>
+    <string name="profile_name">Usain Bolt</string>
+    <string name="profile_aboutme">Hello there, my name\'s Usain and I\'m from Jamaika. I like running and people seem to think I\'m pretty good at it. Come join me at one of my workouts!</string>
+    <string name="profile_aboutmelabel">About me:</string>
+    <string name="profile_eventsCreated">Events created: 7</string>
+    <string name="profile_eventsVisited">Events visited: 21</string>
+    <string name="profile_imageDescription">User\'s profile pic.</string>
+    <string name="profile_activities">Sprint (running)</string>
+    <string name="profile_aboutmeHint">A short welcoming text on a user profile written by him/herself.</string>
 </resources>
