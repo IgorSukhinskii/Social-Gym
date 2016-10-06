@@ -1,23 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
     android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp">
-    <TextView
-        android:id="@+id/eventTitle"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:textSize="18sp"/>
-    <TextView
-        android:id="@+id/eventDescription"
+    android:layout_marginEnd="16dp"
+    card_view:cardCornerRadius="2dp">
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:textSize="14sp"
-        android:layout_below="@id/eventTitle"/>
-</RelativeLayout>
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/eventImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp">
+            <TextView
+                android:id="@+id/eventTitle"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/eventDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textSize="16sp"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_below="@id/eventTitle"/>
+            <Button
+                android:id="@+id/buttonInterested"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eventDescription"
+                android:layout_alignParentStart="true"
+                android:theme="@style/FlatButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:text="Interested"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eventDescription"
+                android:layout_toEndOf="@id/buttonInterested"
+                android:theme="@style/FlatButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:text="Going"/>
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+
