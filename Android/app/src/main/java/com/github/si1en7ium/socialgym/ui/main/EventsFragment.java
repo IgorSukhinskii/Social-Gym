@@ -2,6 +2,7 @@ package com.github.si1en7ium.socialgym.ui.main;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,16 +23,17 @@ import butterknife.ButterKnife;
 import timber.log.Timber;
 
 /**
- * A simple {@link BaseFragment} subclass.
+ * A {@link BaseFragment} subclass that is responsible for showing nearby events in a list.
  * Use the {@link EventsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EventsFragment extends BaseFragment implements EventsMvpView {
+public class EventsFragment extends BaseFragment implements EventsMvpView, SwipeRefreshLayout.OnRefreshListener {
 
     @Inject EventsPresenter eventsPresenter;
     @Inject EventsAdapter eventsAdapter;
 
     @BindView(R.id.eventsList) RecyclerView eventsListView;
+    @BindView(R.id.refresh) SwipeRefreshLayout refreshLayout;
 
     public EventsFragment() {
         // Required empty public constructor
@@ -61,11 +63,15 @@ public class EventsFragment extends BaseFragment implements EventsMvpView {
 
         ButterKnife.bind(this, view);
 
+        refreshLayout.setOnRefreshListener(this);
+        refreshLayout.setColorSchemeResources(R.color.colorPrimary, R.color.colorAccent);
+
         eventsListView.setAdapter(eventsAdapter);
         eventsListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         eventsPresenter.attachView(this);
         eventsPresenter.loadEvents();
+        refreshLayout.setRefreshing(true);
 
         return view;
     }
@@ -85,11 +91,19 @@ public class EventsFragment extends BaseFragment implements EventsMvpView {
         Timber.i("Showing the list of events");
         eventsAdapter.setEvents(events);
         eventsAdapter.notifyDataSetChanged();
+        refreshLayout.setRefreshing(false);
     }
 
     @Override
     public void showError() {
         DialogFactory.createGenericErrorDialog(this.getContext(), R.string.error_loading_events)
                 .show();
+        refreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void onRefresh() {
+        eventsPresenter.loadEvents();
+        refreshLayout.setRefreshing(true);
     }
 }
