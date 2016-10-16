@@ -1,4 +1,4 @@
-package com.github.si1en7ium.socialgym.ui.main;
+package com.github.si1en7ium.socialgym.ui.main.add_event;
 
 
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.si1en7ium.socialgym.R;
+import com.github.si1en7ium.socialgym.ui.main.BaseMainFragment;
 
 import butterknife.ButterKnife;
 

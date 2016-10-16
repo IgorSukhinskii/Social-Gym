@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.github.si1en7ium.socialgym.R;
 import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
+import com.github.si1en7ium.socialgym.ui.main.events.EventsFragment;
 
 import javax.inject.Inject;
 

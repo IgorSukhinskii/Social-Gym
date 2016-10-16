@@ -1,4 +1,4 @@
-package com.github.si1en7ium.socialgym.ui.main;
+package com.github.si1en7ium.socialgym.ui.main.events;
 
 
 import android.content.Context;
@@ -27,7 +27,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
 
     @Inject
     public EventsAdapter() {
-        events = new ArrayList<Event>();
+        events = new ArrayList<>();
     }
 
     public void setEvents(List<Event> events) {
@@ -61,7 +61,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
         @BindView(R.id.eventTitle) TextView eventTitle;
         @BindView(R.id.eventDescription) TextView eventDescription;
 
-        public EventViewHolder(View itemView) {
+        EventViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

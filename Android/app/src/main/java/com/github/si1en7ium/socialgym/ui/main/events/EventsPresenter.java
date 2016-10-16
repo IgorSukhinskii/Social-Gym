@@ -1,4 +1,4 @@
-package com.github.si1en7ium.socialgym.ui.main;
+package com.github.si1en7ium.socialgym.ui.main.events;
 
 
 import com.github.si1en7ium.socialgym.data.remote.SocialGymService;
@@ -25,7 +25,7 @@ public class EventsPresenter extends BasePresenter<EventsMvpView> {
         this.api = api;
     }
 
-    public void loadEvents(){
+    void loadEvents() {
         RxUtil.unsubscribe(eventsSubscription);
         eventsSubscription = api.getEvents()
                 .observeOn(AndroidSchedulers.mainThread())
