@@ -31,11 +31,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             "com.github.si1en7ium.socialgym.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
 
     @Inject MainPresenter mainPresenter;
-    @Inject EventsAdapter eventsAdapter;
+
 
     @BindView(R.id.fab) FloatingActionButton fab;
     @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.eventsList) RecyclerView eventsListView;
 
     /**
      * Return an Intent to start this Activity.
@@ -64,11 +63,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             }
         });
 
-        eventsListView.setAdapter(eventsAdapter);
-        eventsListView.setLayoutManager(new LinearLayoutManager(this));
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentPlaceholder, EventsFragment.newInstance())
+                .commit();
 
         mainPresenter.attachView(this);
-        mainPresenter.loadEvents();
     }
 
     @Override
@@ -91,18 +91,5 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void showEvents(List<Event> events) {
-        Timber.i("Showing events");
-        eventsAdapter.setEvents(events);
-        eventsAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void showError() {
-        DialogFactory.createGenericErrorDialog(this, R.string.error_loading_events)
-                .show();
     }
 }
