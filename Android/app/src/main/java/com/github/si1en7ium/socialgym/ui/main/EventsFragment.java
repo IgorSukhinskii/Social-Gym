@@ -1,6 +1,5 @@
 package com.github.si1en7ium.socialgym.ui.main;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.github.si1en7ium.socialgym.R;
 import com.github.si1en7ium.socialgym.models.Event;
-import com.github.si1en7ium.socialgym.ui.base.BaseFragment;
 import com.github.si1en7ium.socialgym.util.DialogFactory;
 
 import java.util.List;
@@ -23,11 +21,11 @@ import butterknife.ButterKnife;
 import timber.log.Timber;
 
 /**
- * A {@link BaseFragment} subclass that is responsible for showing nearby events in a list.
+ * A {@link BaseMainFragment} subclass that is responsible for showing nearby events in a list.
  * Use the {@link EventsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EventsFragment extends BaseFragment implements EventsMvpView, SwipeRefreshLayout.OnRefreshListener {
+public class EventsFragment extends BaseMainFragment implements EventsMvpView, SwipeRefreshLayout.OnRefreshListener {
 
     @Inject EventsPresenter eventsPresenter;
     @Inject EventsAdapter eventsAdapter;
@@ -74,16 +72,6 @@ public class EventsFragment extends BaseFragment implements EventsMvpView, Swipe
         refreshLayout.setRefreshing(true);
 
         return view;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 
     @Override

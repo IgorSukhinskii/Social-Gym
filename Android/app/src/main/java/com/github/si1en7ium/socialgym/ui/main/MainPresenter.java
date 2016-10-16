@@ -11,4 +11,8 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
     @Inject
     MainPresenter() {
     }
+
+    void showAddEventScreen() {
+        getMvpView().switchToFragment(AddEventFragment.newInstance());
+    }
 }
