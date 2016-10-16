@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.github.si1en7ium.socialgym.SocialGymApplication;
 import com.github.si1en7ium.socialgym.injection.component.ActivityComponent;
-import com.github.si1en7ium.socialgym.injection.component.ConfigPersistentComponent;
-import com.github.si1en7ium.socialgym.injection.component.DaggerConfigPersistentComponent;
+import com.github.si1en7ium.socialgym.injection.component.ConfigPersistentActivityComponent;
+import com.github.si1en7ium.socialgym.injection.component.DaggerConfigPersistentActivityComponent;
 import com.github.si1en7ium.socialgym.injection.module.ActivityModule;
 
 import java.util.HashMap;
@@ -18,57 +18,58 @@ import timber.log.Timber;
 
 /**
  * Abstract activity that every other Activity in this application must implement. It handles
- * creation of Dagger components and makes sure that instances of ConfigPersistentComponent survive
+ * creation of Dagger components and makes sure that instances of ConfigPersistentActivityComponent survive
  * across configuration changes.
  */
 public class BaseActivity extends AppCompatActivity {
 
     private static final String KEY_ACTIVITY_ID = "KEY_ACTIVITY_ID";
     private static final AtomicLong NEXT_ID = new AtomicLong(0);
-    private static final Map<Long, ConfigPersistentComponent> sComponentsMap = new HashMap<>();
+    private static final Map<Long, ConfigPersistentActivityComponent> componentsMap = new HashMap<>();
 
-    private ActivityComponent mActivityComponent;
-    private long mActivityId;
+    private ActivityComponent activityComponent;
+    private long activityId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Create the ActivityComponent and reuses cached ConfigPersistentComponent if this is
+        // Create the ActivityComponent and reuses cached ConfigPersistentActivityComponent if this is
         // being called after a configuration change.
-        mActivityId = savedInstanceState != null ?
-                savedInstanceState.getLong(KEY_ACTIVITY_ID) : NEXT_ID.getAndIncrement();
-        ConfigPersistentComponent configPersistentComponent;
-        if (!sComponentsMap.containsKey(mActivityId)) {
-            Timber.i("Creating new ConfigPersistentComponent id=%d", mActivityId);
-            configPersistentComponent = DaggerConfigPersistentComponent.builder()
+        activityId = savedInstanceState != null ?
+                savedInstanceState.getLong(KEY_ACTIVITY_ID) :
+                NEXT_ID.getAndIncrement();
+        ConfigPersistentActivityComponent configPersistentActivityComponent;
+        if (!componentsMap.containsKey(activityId)) {
+            Timber.i("Creating new ConfigPersistentActivityComponent id=%d", activityId);
+            configPersistentActivityComponent = DaggerConfigPersistentActivityComponent.builder()
                     .applicationComponent(SocialGymApplication.get(this).getComponent())
                     .build();
-            sComponentsMap.put(mActivityId, configPersistentComponent);
+            componentsMap.put(activityId, configPersistentActivityComponent);
         } else {
-            Timber.i("Reusing ConfigPersistentComponent id=%d", mActivityId);
-            configPersistentComponent = sComponentsMap.get(mActivityId);
+            Timber.i("Reusing ConfigPersistentActivityComponent id=%d", activityId);
+            configPersistentActivityComponent = componentsMap.get(activityId);
         }
-        mActivityComponent = configPersistentComponent.activityComponent(new ActivityModule(this));
+        activityComponent = configPersistentActivityComponent.activityComponent(new ActivityModule(this));
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putLong(KEY_ACTIVITY_ID, mActivityId);
+        outState.putLong(KEY_ACTIVITY_ID, activityId);
     }
 
     @Override
     protected void onDestroy() {
         if (!isChangingConfigurations()) {
-            Timber.i("Clearing ConfigPersistentComponent id=%d", mActivityId);
-            sComponentsMap.remove(mActivityId);
+            Timber.i("Clearing ConfigPersistentActivityComponent id=%d", activityId);
+            componentsMap.remove(activityId);
         }
         super.onDestroy();
     }
 
     public ActivityComponent activityComponent() {
-        return mActivityComponent;
+        return activityComponent;
     }
 
 }
