@@ -4,26 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.github.si1en7ium.socialgym.R;
-import com.github.si1en7ium.socialgym.models.Event;
 import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
-import com.github.si1en7ium.socialgym.util.DialogFactory;
-
-import java.util.List;
+import com.github.si1en7ium.socialgym.ui.main.events.EventsFragment;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
@@ -31,11 +24,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             "com.github.si1en7ium.socialgym.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
 
     @Inject MainPresenter mainPresenter;
-    @Inject EventsAdapter eventsAdapter;
+
 
     @BindView(R.id.fab) FloatingActionButton fab;
     @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.eventsList) RecyclerView eventsListView;
 
     /**
      * Return an Intent to start this Activity.
@@ -59,16 +51,13 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                mainPresenter.showAddEventScreen();
             }
         });
 
-        eventsListView.setAdapter(eventsAdapter);
-        eventsListView.setLayoutManager(new LinearLayoutManager(this));
+        switchToFragment(EventsFragment.newInstance());
 
         mainPresenter.attachView(this);
-        mainPresenter.loadEvents();
     }
 
     @Override
@@ -94,15 +83,28 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public void showEvents(List<Event> events) {
-        Timber.i("Showing events");
-        eventsAdapter.setEvents(events);
-        eventsAdapter.notifyDataSetChanged();
+    public void switchToFragment(BaseMainFragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentPlaceholder, fragment)
+                .addToBackStack(null)
+                .commit();
+        setFabVisibility(fragment.isFabShown());
     }
 
     @Override
-    public void showError() {
-        DialogFactory.createGenericErrorDialog(this, R.string.error_loading_events)
-                .show();
+    public void onBackPressed() {
+        super.onBackPressed();
+        BaseMainFragment currentFragment = (BaseMainFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragmentPlaceholder);
+        setFabVisibility(currentFragment.isFabShown());
+    }
+
+    private void setFabVisibility(boolean isFabShown) {
+        if (isFabShown && !fab.isShown()) {
+            fab.show();
+        } else if (!isFabShown && fab.isShown()) {
+            fab.hide();
+        }
     }
 }

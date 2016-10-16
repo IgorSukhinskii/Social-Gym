@@ -2,6 +2,7 @@ package com.github.si1en7ium.socialgym.injection.component;
 
 import com.github.si1en7ium.socialgym.injection.ConfigPersistent;
 import com.github.si1en7ium.socialgym.injection.module.ActivityModule;
+import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
 
 import dagger.Component;
 
@@ -14,7 +15,7 @@ import dagger.Component;
  */
 @ConfigPersistent
 @Component(dependencies = ApplicationComponent.class)
-public interface ConfigPersistentComponent {
+public interface ConfigPersistentActivityComponent {
 
     ActivityComponent activityComponent(ActivityModule activityModule);
 
