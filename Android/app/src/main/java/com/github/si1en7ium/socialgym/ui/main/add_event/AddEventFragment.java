@@ -41,7 +41,7 @@ public class AddEventFragment extends BaseMainFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.main_add_event, container, false);
+        View view = inflater.inflate(R.layout.main_add_event_fragment, container, false);
 
         ButterKnife.bind(this, view);
 

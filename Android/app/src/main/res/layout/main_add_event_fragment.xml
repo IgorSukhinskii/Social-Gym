@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true">
+
+    <TextView
+        android:id="@+id/text_type_of_sports_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:text="Type of Sports" />
+
+    <TextView
+        android:id="@+id/text_place_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/spinner_type_of_sports"
+        android:layout_marginTop="37dp"
+        android:text="Place" />
+
+    <TextView
+        android:id="@+id/text_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_place_label"
+        android:layout_marginTop="40dp"
+        android:text="Date" />
+
+    <TextView
+        android:id="@+id/text_time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_date_label"
+        android:layout_marginTop="40dp"
+        android:text="Time" />
+
+    <TextView
+        android:id="@+id/text_team_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_time_label"
+        android:layout_marginTop="40dp"
+        android:text="Team" />
+
+    <TextView
+        android:id="@+id/text_comment_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_team_label"
+        android:layout_marginTop="40dp"
+        android:text="Comments" />
+
+
+    <Spinner
+        android:id="@+id/spinner_type_of_sports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:layout_toRightOf="@+id/text_type_of_sports_label" />
+
+    <EditText
+        android:id="@+id/edit_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_type_of_sports"
+        android:layout_marginTop="26dp"
+        android:layout_toEndOf="@+id/text_place_label"
+        android:hint="Type here place of event "
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/button_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_place"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/text_place_label"
+        android:text="Set Date" />
+
+    <Button
+        android:id="@+id/button_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_date"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/text_place_label"
+        android:text="Set Time" />
+
+    <Button
+        android:id="@+id/button_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_time"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/text_place_label"
+        android:text="Set Team" />
+
+    <EditText
+        android:id="@+id/edit_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_comment_label"
+        android:layout_marginTop="10dp"
+        android:hint="Type here comments for event "
+        android:inputType="textPersonName" />
+</RelativeLayout>

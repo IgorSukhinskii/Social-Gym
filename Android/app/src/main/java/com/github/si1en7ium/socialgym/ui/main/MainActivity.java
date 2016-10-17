@@ -86,7 +86,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     public void switchToFragment(BaseMainFragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragmentPlaceholder, fragment)
+                .replace(R.id.fragment_placeholder, fragment)
                 .addToBackStack(null)
                 .commit();
         setFabVisibility(fragment.isFabShown());
@@ -96,7 +96,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     public void onBackPressed() {
         super.onBackPressed();
         BaseMainFragment currentFragment = (BaseMainFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.fragmentPlaceholder);
+                .findFragmentById(R.id.fragment_placeholder);
         setFabVisibility(currentFragment.isFabShown());
     }
 
