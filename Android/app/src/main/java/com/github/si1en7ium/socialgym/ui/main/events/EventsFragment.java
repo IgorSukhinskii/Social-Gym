@@ -31,7 +31,7 @@ public class EventsFragment extends BaseMainFragment implements EventsMvpView, S
     @Inject EventsPresenter eventsPresenter;
     @Inject EventsAdapter eventsAdapter;
 
-    @BindView(R.id.eventsList) RecyclerView eventsListView;
+    @BindView(R.id.list_events) RecyclerView eventsListView;
     @BindView(R.id.refresh) SwipeRefreshLayout refreshLayout;
 
     public EventsFragment() {
@@ -58,7 +58,7 @@ public class EventsFragment extends BaseMainFragment implements EventsMvpView, S
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.main_events_list, container, false);
+        View view = inflater.inflate(R.layout.main_events_list_fragment, container, false);
 
         ButterKnife.bind(this, view);
 

@@ -57,9 +57,9 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
 
     class EventViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.eventImage) ImageView eventImage;
-        @BindView(R.id.eventTitle) TextView eventTitle;
-        @BindView(R.id.eventDescription) TextView eventDescription;
+        @BindView(R.id.image_event) ImageView eventImage;
+        @BindView(R.id.text_event_title) TextView eventTitle;
+        @BindView(R.id.text_event_description) TextView eventDescription;
 
         EventViewHolder(View itemView) {
             super(itemView);
