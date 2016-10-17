@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_alignParentTop="true">
+    android:layout_alignParentTop="true"
+    android:layout_margin="16dp"
+
+    >
 
     <TextView
         android:id="@+id/typeOfSportsLabel"
@@ -10,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="45dp"
         android:text="Type of Sports" />
 
     <TextView
@@ -19,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/typeOfSportsSelector"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="45dp"
         android:text="Place" />
 
     <TextView
@@ -27,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/placeLabel"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="45dp"
         android:text="Date" />
 
     <TextView
@@ -35,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/dateLabel"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="45dp"
         android:text="Time" />
 
     <TextView
@@ -43,15 +47,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/timeLabel"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="45dp"
         android:text="Team" />
+
+
+    <TextView
+        android:id="@+id/photoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/teamLabel"
+        android:layout_marginTop="45dp"
+        android:text="Photo" />
+
 
     <TextView
         android:id="@+id/commentsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/teamLabel"
-        android:layout_marginTop="40dp"
+        android:layout_below="@id/photoLabel"
+        android:layout_marginTop="45dp"
         android:text="Comments" />
 
 
@@ -59,7 +73,7 @@
         android:id="@+id/typeOfSportsSelector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="45dp"
         android:layout_toRightOf="@+id/typeOfSportsLabel" />
 
     <EditText
@@ -67,44 +81,70 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/typeOfSportsSelector"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="35dp"
         android:layout_toEndOf="@+id/placeLabel"
+        android:textSize="14sp"
         android:hint="Type here place of event "
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/dateButton"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/placeEdit"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginLeft="35dp"
         android:layout_toEndOf="@+id/placeLabel"
         android:text="Set Date" />
 
     <Button
         android:id="@+id/timeButton"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/dateButton"
         android:layout_marginTop="12dp"
+        android:layout_marginLeft="35dp"
         android:layout_toEndOf="@+id/placeLabel"
         android:text="Set Time" />
 
     <Button
         android:id="@+id/teamButton"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/timeButton"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="35dp"
         android:layout_toEndOf="@+id/placeLabel"
         android:text="Set Team" />
+
+    <Button
+        android:id="@+id/photoButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/teamButton"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="35dp"
+        android:layout_toEndOf="@+id/photoLabel"
+        android:text="Set Photo" />
+
 
     <EditText
         android:id="@+id/commentsEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/commentsLabel"
-        android:layout_marginTop="10dp"
-        android:hint="Type here comments for event "
+        android:layout_marginTop="12dp"
+        android:textSize="14sp"
+        android:hint="Type here comments for event"
         android:inputType="textPersonName" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add_white_24dp"
+        android:id="@+id/imageView"
+        android:layout_alignBottom="@+id/photoButton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/dateButton" />
 </RelativeLayout>
