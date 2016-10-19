@@ -2,7 +2,6 @@ package com.github.si1en7ium.socialgym.ui.main.add_event;
 
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +28,7 @@ public class AddEventFragment extends BaseMainFragment {
 
     @BindView(R.id.dateButton) Button dateButton;
     @BindView(R.id.timeButton) Button timeButton;
+    @BindView(R.id.teamButton) Button teamButton;
 
     public AddEventFragment() {
         // Required empty public constructor
@@ -75,6 +75,16 @@ public class AddEventFragment extends BaseMainFragment {
             }
         });
 
+        teamButton = (Button)view.findViewById(R.id.teamButton);
+        teamButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment newFragment = new NumberPickerFragment();
+                newFragment.show(getActivity().getSupportFragmentManager(), "numberPicker") ;
+            }
+        });
+
+
 
         return view;
     }
@@ -85,7 +95,6 @@ public class AddEventFragment extends BaseMainFragment {
     }
 
 
-    public void onClickSetTeam (View view) {}
     public void onClickSetPhoto (View view) {}
 
 }
