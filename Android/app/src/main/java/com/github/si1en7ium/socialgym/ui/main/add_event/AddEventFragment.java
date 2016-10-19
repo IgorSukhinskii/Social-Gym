@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import android.support.v4.app.DialogFragment;
 import android.widget.Button;
+import android.widget.ImageView;
 
 
 import com.github.si1en7ium.socialgym.R;
@@ -29,6 +30,7 @@ public class AddEventFragment extends BaseMainFragment {
     @BindView(R.id.dateButton) Button dateButton;
     @BindView(R.id.timeButton) Button timeButton;
     @BindView(R.id.teamButton) Button teamButton;
+    @BindView(R.id.photoButton) Button photoButton;
 
     public AddEventFragment() {
         // Required empty public constructor
@@ -83,6 +85,15 @@ public class AddEventFragment extends BaseMainFragment {
                 newFragment.show(getActivity().getSupportFragmentManager(), "numberPicker") ;
             }
         });
+     photoButton = (Button)view.findViewById(R.id.photoButton);
+        photoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView imgView = (ImageView)getActivity().findViewById(R.id.photoView);
+                imgView .setVisibility(View.VISIBLE);
+            }
+        });
+
 
 
 
@@ -95,6 +106,5 @@ public class AddEventFragment extends BaseMainFragment {
     }
 
 
-    public void onClickSetPhoto (View view) {}
 
 }

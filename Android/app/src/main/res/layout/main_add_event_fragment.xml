@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentTop="true"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin">
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="12dp">
 
     <TextView
         android:id="@+id/typeOfSportsLabel"
@@ -145,10 +147,12 @@
         android:inputType="textPersonName" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/photoView"
         android:layout_alignBottom="@+id/photoButton"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/dateButton" />
+        android:layout_alignTop="@+id/dateButton"
+    app:srcCompat="@drawable/saimaa"
+    android:visibility="invisible"/>
 </RelativeLayout>
