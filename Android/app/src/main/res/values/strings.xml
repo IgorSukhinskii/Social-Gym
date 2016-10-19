@@ -7,4 +7,15 @@
     <string name="dialog_action_ok">OK</string>
     <string name="dialog_error_title">Error</string>
     <string name="error_loading_events">An error has occured while loading events</string>
+    <string-array name="type_of_sports">
+        <item>Running &amp; Jogging</item>
+        <item>Crossfit &amp; Fitness</item>
+        <item>Tennis</item>
+        <item>Badminton</item>
+        <item>Volleyball</item>
+        <item>Chess</item>
+        <item>Cycling</item>
+        <item>Basketball</item>
+        <item>Combat Sports</item>
+    </string-array>
 </resources>

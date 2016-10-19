@@ -70,8 +70,12 @@
         android:id="@+id/typeOfSportsSelector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_toRightOf="@+id/typeOfSportsLabel" />
+        android:layout_marginTop="42dp"
+        android:layout_marginLeft="35dp"
+        android:textSize="14sp"
+        android:layout_toRightOf="@+id/typeOfSportsLabel"
+        android:entries="@array/type_of_sports"
+        />
 
     <EditText
         android:id="@+id/placeEdit"
@@ -93,7 +97,8 @@
         android:layout_marginTop="19dp"
         android:layout_marginLeft="35dp"
         android:layout_toEndOf="@+id/placeLabel"
-        android:text="Set Date" />
+        android:text="Set Date"
+       />
 
     <Button
         android:id="@+id/timeButton"
@@ -103,7 +108,8 @@
         android:layout_marginTop="12dp"
         android:layout_marginLeft="35dp"
         android:layout_toEndOf="@+id/placeLabel"
-        android:text="Set Time" />
+        android:text="Set Time"
+        />
 
     <Button
         android:id="@+id/teamButton"
@@ -113,7 +119,8 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="35dp"
         android:layout_toEndOf="@+id/placeLabel"
-        android:text="Set Team" />
+        android:text="Set Team"
+        />
 
     <Button
         android:id="@+id/photoButton"
@@ -123,7 +130,8 @@
         android:layout_marginTop="14dp"
         android:layout_marginLeft="35dp"
         android:layout_toEndOf="@+id/photoLabel"
-        android:text="Set Photo" />
+        android:text="Set Photo"
+       />
 
 
     <EditText
