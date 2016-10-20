@@ -1,14 +1,22 @@
 from flask import Flask, request
 import json
+import sqlite3
 
 app = Flask(__name__)
 
+conn = sqlite3.connect('api.db')
 
 @app.route("/events", methods=['GET', 'POST'])
 def events():
     if request.method == 'POST':
-        print(request.get_json())
-        return ""
+        event = request.get_json()
+        print(event)
+        c = conn.cursor()
+        c.execute('''
+            INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?)
+        ''', (event["title"], event["description"], event["sportKind"], event["dateTime"], event["duration"], event["location"], event["imageUrl"]))
+        conn.commit()
+        return '{"result": "success"}'
     else:
         user = {
             "name": "Tom Cruise",
@@ -36,7 +44,20 @@ def events():
                 "imageUrl": "http://www.livelappeenranta.fi/sites/default/files/lut1.jpg"
             }
         ]
-        return json.dumps(result)
+        c = conn.cursor()
+        c.execute('select * from events')
+        res = list(map(lambda t: {
+            "title": t[0],
+            "description": t[1],
+            "creator": user,
+            "sportKind": t[2],
+            "dateTime": t[3],
+            "duration": t[4],
+            "location": t[5],
+            "imageUrl": "http://www.livelappeenranta.fi/sites/default/files/lut1.jpg"
+        }, c.fetchall()))
+        print(res)
+        return json.dumps(res)
 
 
 if __name__ == "__main__":
