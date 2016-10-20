@@ -56,7 +56,6 @@ def events():
             "location": t[5],
             "imageUrl": "http://www.livelappeenranta.fi/sites/default/files/lut1.jpg"
         }, c.fetchall()))
-        print(res)
         return json.dumps(res)
 
 
