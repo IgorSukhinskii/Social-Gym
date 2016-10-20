@@ -12,7 +12,12 @@ import android.text.format.DateFormat;
 import android.widget.TimePicker;
 
 
-public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+public class TimePickerFragment extends DialogFragment {
+    private final TimePickerDialog.OnTimeSetListener listener;
+
+    public TimePickerFragment(TimePickerDialog.OnTimeSetListener listener) {
+        this.listener = listener;
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -22,7 +27,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         int minute = c.get(Calendar.MINUTE);
 
         // Create a new instance of TimePickerDialog and return it
-        return new TimePickerDialog(getActivity(), this, hour, minute,
+        return new TimePickerDialog(getActivity(), listener, hour, minute,
                 DateFormat.is24HourFormat(getActivity()));
     }
 
