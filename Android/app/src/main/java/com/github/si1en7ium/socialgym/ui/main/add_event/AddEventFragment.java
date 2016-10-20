@@ -27,10 +27,14 @@ import static com.github.si1en7ium.socialgym.R.layout.main_add_event_fragment;
  */
 public class AddEventFragment extends BaseMainFragment {
 
-    @BindView(R.id.dateButton) Button dateButton;
-    @BindView(R.id.timeButton) Button timeButton;
-    @BindView(R.id.teamButton) Button teamButton;
-    @BindView(R.id.photoButton) Button photoButton;
+    @BindView(R.id.dateButton)
+    Button dateButton;
+    @BindView(R.id.timeButton)
+    Button timeButton;
+    @BindView(R.id.teamButton)
+    Button teamButton;
+    @BindView(R.id.photoButton)
+    Button photoButton;
 
     public AddEventFragment() {
         // Required empty public constructor
@@ -59,42 +63,40 @@ public class AddEventFragment extends BaseMainFragment {
 
         ButterKnife.bind(this, view);
 
-        timeButton = (Button)view.findViewById(R.id.timeButton);
+        timeButton = (Button) view.findViewById(R.id.timeButton);
         timeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DialogFragment newFragment = new TimePickerFragment();
-                newFragment.show(getActivity().getSupportFragmentManager(), "timePicker") ;
+                newFragment.show(getActivity().getSupportFragmentManager(), "timePicker");
             }
         });
 
-        dateButton = (Button)view.findViewById(R.id.dateButton);
+        dateButton = (Button) view.findViewById(R.id.dateButton);
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DialogFragment newFragment = new DatePickerFragment();
-                newFragment.show(getActivity().getSupportFragmentManager(), "datePicker") ;
+                newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
             }
         });
 
-        teamButton = (Button)view.findViewById(R.id.teamButton);
+        teamButton = (Button) view.findViewById(R.id.teamButton);
         teamButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DialogFragment newFragment = new NumberPickerFragment();
-                newFragment.show(getActivity().getSupportFragmentManager(), "numberPicker") ;
+                newFragment.show(getActivity().getSupportFragmentManager(), "numberPicker");
             }
         });
-     photoButton = (Button)view.findViewById(R.id.photoButton);
+        photoButton = (Button) view.findViewById(R.id.photoButton);
         photoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ImageView imgView = (ImageView)getActivity().findViewById(R.id.photoView);
-                imgView .setVisibility(View.VISIBLE);
+                ImageView imgView = (ImageView) getActivity().findViewById(R.id.photoView);
+                imgView.setVisibility(View.VISIBLE);
             }
         });
-
-
 
 
         return view;
@@ -104,7 +106,6 @@ public class AddEventFragment extends BaseMainFragment {
     public boolean isFabShown() {
         return false;
     }
-
 
 
 }
