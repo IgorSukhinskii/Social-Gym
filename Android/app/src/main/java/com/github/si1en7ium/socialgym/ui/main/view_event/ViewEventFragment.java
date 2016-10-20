@@ -63,7 +63,7 @@ public class ViewEventFragment extends BaseMainFragment {
         ButterKnife.bind(this, view);
 
         title.setText(event.title());
-        eventType.setText(event.sportKind().toString());
+        eventType.setText(event.sportKind().resourceId);
         MutableDateTime end = event.dateTime().toMutableDateTime();
         end.add(event.duration());
         String timeString = String.format("%1d:%2d - %3d:%4d",
