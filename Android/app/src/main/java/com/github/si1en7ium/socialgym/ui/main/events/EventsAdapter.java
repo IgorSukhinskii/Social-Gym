@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.github.si1en7ium.socialgym.R;
 import com.github.si1en7ium.socialgym.models.Event;
+import com.github.si1en7ium.socialgym.ui.main.MainActivity;
+import com.github.si1en7ium.socialgym.ui.main.view_event.ViewEventFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,10 +46,16 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
 
     @Override
     public void onBindViewHolder(EventViewHolder holder, int position) {
-        Event event = events.get(position);
+        final Event event = events.get(position);
         Glide.with(context).load(event.imageUrl()).centerCrop().into(holder.eventImage);
         holder.eventTitle.setText(event.title());
         holder.eventDescription.setText(event.description());
+        holder.eventImage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                ((MainActivity) context).switchToFragment(ViewEventFragment.newInstance(event));
+            }
+        });
     }
 
     @Override
