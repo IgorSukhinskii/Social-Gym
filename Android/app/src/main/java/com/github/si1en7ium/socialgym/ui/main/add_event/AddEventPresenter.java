@@ -70,7 +70,7 @@ class AddEventPresenter extends BasePresenter<AddEventMvpView> {
                 .location(this.location)
                 .sportKind(this.sportKind)
                 .title(this.title)
-                .dateTime(new DateTime(year, month, day, startHour, startMinute))
+                .dateTime(new DateTime(year, month+1, day, startHour, startMinute))
                 .duration(Duration.standardHours(1))
                 .build();
 
