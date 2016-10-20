@@ -1,11 +1,13 @@
 package com.github.si1en7ium.socialgym.models;
 
+import android.os.Parcelable;
+
 import com.google.auto.value.AutoValue;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 
 @AutoValue
-public abstract class User {
+public abstract class User implements Parcelable {
     public abstract String name();
     public abstract String avatarUrl();
 

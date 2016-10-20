@@ -18,6 +18,7 @@ def events():
             "sportKind": "JOGGING",
             "dateTime": "2016-10-07T10:50:00Z",
             "duration": "PT6600.0S",
+            "location": "Honkakatu 7",
             "imageUrl": "http://edu.glavsprav.ru/_static/_profiles/499/glav.jpg"
         },
         {
@@ -27,6 +28,7 @@ def events():
             "sportKind": "RUNNING",
             "dateTime": "2016-10-07T12:50:00Z",
             "duration": "PT6600.0S",
+            "location": "Laserkatu 8",
             "imageUrl": "http://www.livelappeenranta.fi/sites/default/files/lut1.jpg"
         }
     ]

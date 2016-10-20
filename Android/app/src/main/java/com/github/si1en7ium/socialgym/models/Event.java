@@ -1,21 +1,34 @@
 package com.github.si1en7ium.socialgym.models;
 
+import android.os.Parcelable;
+
+import com.github.si1en7ium.socialgym.util.datetime.ParcelableDateTime;
+import com.github.si1en7ium.socialgym.util.datetime.ParcelableDuration;
 import com.google.auto.value.AutoValue;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.SerializedName;
 
 import org.joda.time.ReadableDateTime;
 import org.joda.time.ReadableDuration;
 
 @AutoValue
-public abstract class Event {
+public abstract class Event implements Parcelable {
     public abstract String title();
     public abstract String description();
     public abstract User creator();
     public abstract SportKind sportKind();
-    public abstract ReadableDateTime dateTime();
-    public abstract ReadableDuration duration();
+    @SerializedName("dateTime") protected abstract ParcelableDateTime _dateTime();
+    @SerializedName("duration") protected abstract ParcelableDuration _duration();
+    public abstract String location();
     public abstract String imageUrl();
+
+    public ReadableDateTime dateTime() {
+        return _dateTime().val;
+    }
+    public ReadableDuration duration() {
+        return _duration().val;
+    }
 
     public abstract Builder toBuilder();
 
@@ -34,9 +47,18 @@ public abstract class Event {
         public abstract Builder description(String description);
         public abstract Builder creator(User creator);
         public abstract Builder sportKind(SportKind sportKind);
-        public abstract Builder dateTime(ReadableDateTime dateTime);
-        public abstract Builder duration(ReadableDuration duration);
+        protected abstract Builder _dateTime(ParcelableDateTime _dateTime);
+        protected abstract Builder _duration(ParcelableDuration _duration);
+        public abstract Builder location(String location);
         public abstract Builder imageUrl(String imageUrl);
+
+        public Builder dateTime(ReadableDateTime dateTime) {
+            return _dateTime(new ParcelableDateTime(dateTime));
+        }
+
+        public Builder duration(ReadableDuration duration) {
+            return _duration(new ParcelableDuration(duration));
+        }
 
         public abstract Event build();
     }

@@ -3,6 +3,8 @@ package com.github.si1en7ium.socialgym.data.remote;
 
 import com.github.si1en7ium.socialgym.data.SocialGymTypeAdapterFactory;
 import com.github.si1en7ium.socialgym.models.Event;
+import com.github.si1en7ium.socialgym.util.datetime.ParcelableDateTime;
+import com.github.si1en7ium.socialgym.util.datetime.ParcelableDuration;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -78,6 +80,48 @@ public interface SocialGymService {
                             }
                             String s = in.nextString();
                             return Duration.parse(s);
+                        }
+                    })
+                    .registerTypeAdapter(ParcelableDateTime.class, new TypeAdapter<ParcelableDateTime>() {
+                        @Override
+                        public void write(JsonWriter out, ParcelableDateTime value) throws IOException {
+                            if (value == null) {
+                                out.nullValue();
+                                return;
+                            }
+                            String s = value.val.toString();
+                            out.value(s);
+                        }
+
+                        @Override
+                        public ParcelableDateTime read(JsonReader in) throws IOException {
+                            if (in.peek() == JsonToken.NULL) {
+                                in.nextNull();
+                                return null;
+                            }
+                            String s = in.nextString();
+                            return new ParcelableDateTime(DateTime.parse(s));
+                        }
+                    })
+                    .registerTypeAdapter(ParcelableDuration.class, new TypeAdapter<ParcelableDuration>() {
+                        @Override
+                        public void write(JsonWriter out, ParcelableDuration value) throws IOException {
+                            if (value == null) {
+                                out.nullValue();
+                                return;
+                            }
+                            String s = value.val.toString();
+                            out.value(s);
+                        }
+
+                        @Override
+                        public ParcelableDuration read(JsonReader in) throws IOException {
+                            if (in.peek() == JsonToken.NULL) {
+                                in.nextNull();
+                                return null;
+                            }
+                            String s = in.nextString();
+                            return new ParcelableDuration(Duration.parse(s));
                         }
                     })
                     .registerTypeAdapterFactory(SocialGymTypeAdapterFactory.create())
