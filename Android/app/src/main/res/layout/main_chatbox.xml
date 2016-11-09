@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="Type your message here..."
+        android:ems="10"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="18dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_width="match_parent"
+        android:background="@drawable/ic_edittextbackground"
+        android:id="@+id/editTextMessage"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="100dp"/>
+
+    <Button
+        android:text="Send"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="21dp"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:id="@+id/buttonSendMessage"
+        android:layout_alignRight="@+id/editTextMessage"
+        android:layout_alignBaseline="@+id/editTextMessage"/>
+
+    <ImageView
+        app:srcCompat="@mipmap/sample_profile_picture"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/editTextMessage"
+        android:layout_marginTop="41dp"
+        android:id="@+id/imageViewReceiver"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+
+    <TextView
+        android:text="Usain Bolt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageViewReceiver"
+        android:layout_toEndOf="@+id/imageViewReceiver"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="14dp"
+        android:id="@+id/textViewName"
+        android:textSize="30sp"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:text="Online"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewOnlineStatus"
+        android:layout_alignParentBottom="false"
+        android:layout_alignLeft="@+id/textViewName"
+        android:layout_alignTop="@+id/textViewName"
+        android:layout_marginTop="35dp"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/chatListContainer"
+        android:layout_above="@+id/buttonSendMessage"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="130dp"/>
+
+</RelativeLayout>
