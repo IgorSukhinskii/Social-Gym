@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentTop="true"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin">
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="12dp">
 
     <TextView
         android:id="@+id/typeOfSportsLabel"
@@ -39,22 +41,13 @@
         android:layout_marginTop="45dp"
         android:text="Time" />
 
-    <TextView
-        android:id="@+id/teamLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/timeLabel"
-        android:layout_marginTop="45dp"
-        android:text="Team" />
-
 
     <TextView
         android:id="@+id/photoLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/teamLabel"
-        android:layout_marginTop="45dp"
-        android:text="Photo" />
+        android:layout_below="@id/timeLabel"
+        android:layout_marginTop="45dp" />
 
 
     <TextView
@@ -70,8 +63,11 @@
         android:id="@+id/typeOfSportsSelector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_toRightOf="@+id/typeOfSportsLabel" />
+        android:layout_marginTop="42dp"
+        android:layout_marginLeft="35dp"
+        android:textSize="14sp"
+        android:layout_toRightOf="@+id/typeOfSportsLabel"
+        />
 
     <EditText
         android:id="@+id/placeEdit"
@@ -93,7 +89,8 @@
         android:layout_marginTop="19dp"
         android:layout_marginLeft="35dp"
         android:layout_toEndOf="@+id/placeLabel"
-        android:text="Set Date" />
+        android:text="Set Date"
+       />
 
     <Button
         android:id="@+id/timeButton"
@@ -103,27 +100,19 @@
         android:layout_marginTop="12dp"
         android:layout_marginLeft="35dp"
         android:layout_toEndOf="@+id/placeLabel"
-        android:text="Set Time" />
-
-    <Button
-        android:id="@+id/teamButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/timeButton"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="35dp"
-        android:layout_toEndOf="@+id/placeLabel"
-        android:text="Set Team" />
+        android:text="Set Time"
+        />
 
     <Button
         android:id="@+id/photoButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/teamButton"
+        android:layout_below="@+id/timeButton"
         android:layout_marginTop="14dp"
         android:layout_marginLeft="35dp"
         android:layout_toEndOf="@+id/photoLabel"
-        android:text="Set Photo" />
+        android:text="Done"
+       />
 
 
     <EditText
@@ -137,10 +126,13 @@
         android:inputType="textPersonName" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/photoView"
         android:layout_alignBottom="@+id/photoButton"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/dateButton" />
+        android:layout_alignTop="@+id/dateButton"
+    app:srcCompat="@drawable/saimaa"
+    android:visibility="invisible"/>
+
 </RelativeLayout>
