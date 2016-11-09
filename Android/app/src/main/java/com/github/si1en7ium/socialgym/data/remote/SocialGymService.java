@@ -3,6 +3,9 @@ package com.github.si1en7ium.socialgym.data.remote;
 
 import com.github.si1en7ium.socialgym.data.SocialGymTypeAdapterFactory;
 import com.github.si1en7ium.socialgym.models.Event;
+import com.github.si1en7ium.socialgym.models.PostEventResult;
+import com.github.si1en7ium.socialgym.util.datetime.ParcelableDateTime;
+import com.github.si1en7ium.socialgym.util.datetime.ParcelableDuration;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -26,7 +29,9 @@ import java.util.List;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import rx.Observable;
 
 public interface SocialGymService {
@@ -34,6 +39,9 @@ public interface SocialGymService {
 
     @GET("events")
     Observable<List<Event>> getEvents();
+
+    @POST("events")
+    Observable<PostEventResult> postEvent(@Body Event event);
 
     class Creator {
         public static SocialGymService newSocialGymService() {
@@ -78,6 +86,48 @@ public interface SocialGymService {
                             }
                             String s = in.nextString();
                             return Duration.parse(s);
+                        }
+                    })
+                    .registerTypeAdapter(ParcelableDateTime.class, new TypeAdapter<ParcelableDateTime>() {
+                        @Override
+                        public void write(JsonWriter out, ParcelableDateTime value) throws IOException {
+                            if (value == null) {
+                                out.nullValue();
+                                return;
+                            }
+                            String s = value.val.toString();
+                            out.value(s);
+                        }
+
+                        @Override
+                        public ParcelableDateTime read(JsonReader in) throws IOException {
+                            if (in.peek() == JsonToken.NULL) {
+                                in.nextNull();
+                                return null;
+                            }
+                            String s = in.nextString();
+                            return new ParcelableDateTime(DateTime.parse(s));
+                        }
+                    })
+                    .registerTypeAdapter(ParcelableDuration.class, new TypeAdapter<ParcelableDuration>() {
+                        @Override
+                        public void write(JsonWriter out, ParcelableDuration value) throws IOException {
+                            if (value == null) {
+                                out.nullValue();
+                                return;
+                            }
+                            String s = value.val.toString();
+                            out.value(s);
+                        }
+
+                        @Override
+                        public ParcelableDuration read(JsonReader in) throws IOException {
+                            if (in.peek() == JsonToken.NULL) {
+                                in.nextNull();
+                                return null;
+                            }
+                            String s = in.nextString();
+                            return new ParcelableDuration(Duration.parse(s));
                         }
                     })
                     .registerTypeAdapterFactory(SocialGymTypeAdapterFactory.create())
