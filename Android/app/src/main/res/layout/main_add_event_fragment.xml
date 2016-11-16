@@ -4,135 +4,148 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentTop="true"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    android:layout_marginRight="12dp">
+    android:layout_marginLeft="@dimen/horizontal_margin"
+    >
 
-    <TextView
-        android:id="@+id/typeOfSportsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/icon_sports"
+        android:layout_width="40dp"
+        android:layout_height="72dp"
+        android:gravity="center"
+        app:srcCompat="@drawable/ic_run"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="45dp"
-        android:text="Type of Sports" />
-
-    <TextView
-        android:id="@+id/placeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/typeOfSportsSelector"
-        android:layout_marginTop="45dp"
-        android:text="Place" />
-
-    <TextView
-        android:id="@+id/dateLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/placeLabel"
-        android:layout_marginTop="45dp"
-        android:text="Date" />
-
-    <TextView
-        android:id="@+id/timeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/dateLabel"
-        android:layout_marginTop="45dp"
-        android:text="Time" />
-
-
-    <TextView
-        android:id="@+id/photoLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/timeLabel"
-        android:layout_marginTop="45dp" />
-
-
-    <TextView
-        android:id="@+id/commentsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/photoLabel"
-        android:layout_marginTop="45dp"
-        android:text="Comments" />
-
+        android:layout_alignParentTop="true"/>
 
     <Spinner
         android:id="@+id/typeOfSportsSelector"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
-        android:layout_marginLeft="35dp"
-        android:textSize="14sp"
-        android:layout_toRightOf="@+id/typeOfSportsLabel"
-        />
+        android:layout_height="72dp"
+        android:gravity="center"
+        android:layout_marginLeft="16dp"
+        android:textSize="13sp"
+        android:layout_toEndOf="@+id/icon_sports"/>
+
+    <ImageView
+        android:id="@+id/icon_place"
+        android:layout_width="40dp"
+        android:layout_height="72dp"
+        android:gravity="center"
+        app:srcCompat="@drawable/ic_navi"
+        android:layout_below="@+id/icon_sports"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/placeEdit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/typeOfSportsSelector"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_toEndOf="@+id/placeLabel"
+        android:layout_width="322dp"
+        android:layout_height="72dp"
+        android:gravity="left|center"
+        android:layout_marginLeft="16dp"
         android:textSize="14sp"
+        android:layout_below="@+id/typeOfSportsSelector"
         android:hint="Type here place of event "
-        android:inputType="textPersonName" />
+        android:layout_toEndOf="@+id/icon_place"/>
+
+
+    <ImageView
+        android:id="@+id/icon_date"
+        android:layout_width="40dp"
+        android:layout_height="72dp"
+        android:gravity="center"
+        app:srcCompat="@drawable/ic_calendar"
+        android:layout_below="@+id/icon_place" />
+
+
+    <ImageView
+        android:id="@+id/icon_time"
+        android:layout_width="40dp"
+        android:layout_height="72dp"
+        android:gravity="center"
+        app:srcCompat="@drawable/ic_clock_v"
+        android:layout_below="@+id/icon_date" />
+
+    <ImageView
+        android:id="@+id/icon_comment"
+        android:layout_width="40dp"
+        android:layout_height="72dp"
+        android:gravity="center"
+        app:srcCompat="@drawable/ic_comment"
+        android:layout_below="@+id/icon_time" />
+
+    <EditText
+        android:id="@+id/commentsEdit"
+        android:layout_width="322dp"
+        android:layout_height="72dp"
+        android:gravity="left|center"
+        android:layout_marginLeft="16dp"
+        android:textSize="14sp"
+        android:hint="Type here comments for event"
+        android:layout_below="@+id/icon_time"
+        android:layout_toEndOf="@+id/icon_comment" />
+
+
+    <ImageView
+        android:id="@+id/icon_photo"
+        android:layout_width="40dp"
+        android:layout_height="72dp"
+        android:gravity="center"
+        app:srcCompat="@drawable/ic_photo"
+        android:layout_below="@+id/icon_comment"/>
+
+    <Button
+        android:id="@+id/photoButton"
+        android:layout_width="100dp"
+        android:layout_margin="16dp"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:layout_below="@+id/icon_comment"
+        android:layout_marginLeft="16dp"
+        android:layout_toEndOf="@+id/icon_place"
+        android:text="Set Photo"
+        />
+
 
     <Button
         android:id="@+id/dateButton"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_height="36dp"
+        android:gravity="center"
         android:layout_below="@+id/placeEdit"
-        android:layout_marginTop="19dp"
-        android:layout_marginLeft="35dp"
-        android:layout_toEndOf="@+id/placeLabel"
+        android:layout_marginLeft="16dp"
+        android:layout_toEndOf="@+id/icon_place"
         android:text="Set Date"
        />
 
     <Button
         android:id="@+id/timeButton"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_height="36dp"
+        android:gravity="center"
         android:layout_below="@+id/dateButton"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="35dp"
-        android:layout_toEndOf="@+id/placeLabel"
+        android:layout_marginLeft="16dp"
+        android:layout_toEndOf="@+id/icon_place"
         android:text="Set Time"
         />
 
     <Button
-        android:id="@+id/photoButton"
+        android:id="@+id/doneButton"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/timeButton"
-        android:layout_marginTop="14dp"
-        android:layout_marginLeft="35dp"
-        android:layout_toEndOf="@+id/photoLabel"
+        android:layout_margin="16dp"
+        android:layout_height="36dp"
+        android:layout_marginRight="16dp"
         android:text="Done"
-       />
-
-
-    <EditText
-        android:id="@+id/commentsEdit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/commentsLabel"
-        android:layout_marginTop="12dp"
-        android:textSize="14sp"
-        android:hint="Type here comments for event"
-        android:inputType="textPersonName" />
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/photoView"
-        android:layout_alignBottom="@+id/photoButton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/dateButton"
-    app:srcCompat="@drawable/saimaa"
-    android:visibility="invisible"/>
+        android:visibility="visible"
+        android:layout_below="@+id/icon_photo"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

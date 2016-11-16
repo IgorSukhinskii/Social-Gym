@@ -12,7 +12,6 @@ import android.support.v4.app.DialogFragment;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
@@ -40,7 +39,7 @@ public class AddEventFragment extends BaseMainFragment implements
 
     @BindView(R.id.dateButton) Button dateButton;
     @BindView(R.id.timeButton) Button timeButton;
-    @BindView(R.id.photoButton) Button doneButton;
+    @BindView(R.id.doneButton) Button doneButton;
     @BindView(R.id.typeOfSportsSelector) Spinner typeOfSportsSelector;
     @BindView(R.id.placeEdit) EditText locationEdit;
     @BindView(R.id.commentsEdit) EditText descriptionEdit;
@@ -92,10 +91,14 @@ public class AddEventFragment extends BaseMainFragment implements
             public void onClick(View view) {
 
                 datePickerFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
+
             }
         });
 
-        doneButton = (Button) view.findViewById(R.id.photoButton);
+
+
+
+        doneButton = (Button) view.findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

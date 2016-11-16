@@ -5,7 +5,10 @@ import android.app.DatePickerDialog;
 import java.util.Calendar;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TextView;
 
 
 
@@ -28,7 +31,4 @@ public class DatePickerFragment extends DialogFragment {
         return new DatePickerDialog(getActivity(), listener, year, month, day);
     }
 
-    public void onDateSet(DatePicker view, int year, int month, int day) {
-        // Do something with the date chosen by the user
-    }
 }
