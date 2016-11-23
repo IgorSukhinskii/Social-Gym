@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentTop="true"
-    android:layout_marginLeft="@dimen/horizontal_margin"
+
     >
+
 
     <ImageView
         android:id="@+id/icon_sports"
@@ -13,8 +14,10 @@
         android:layout_height="72dp"
         android:gravity="center"
         app:srcCompat="@drawable/ic_run"
+        android:layout_below="@+id/eventPhoto"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_marginLeft="16dp"
+        />
 
     <Spinner
         android:id="@+id/typeOfSportsSelector"
@@ -23,6 +26,7 @@
         android:gravity="center"
         android:layout_marginLeft="16dp"
         android:textSize="13sp"
+        android:layout_below="@+id/eventPhoto"
         android:layout_toEndOf="@+id/icon_sports"/>
 
     <ImageView
@@ -32,7 +36,9 @@
         android:gravity="center"
         app:srcCompat="@drawable/ic_navi"
         android:layout_below="@+id/icon_sports"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+       />
 
     <EditText
         android:id="@+id/placeEdit"
@@ -52,8 +58,21 @@
         android:layout_height="72dp"
         android:gravity="center"
         app:srcCompat="@drawable/ic_calendar"
-        android:layout_below="@+id/icon_place" />
+        android:layout_below="@+id/icon_place"
+        android:layout_marginLeft="16dp"/>
 
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="100dp"
+        android:layout_height="72dp"
+        android:gravity="left|center"
+        android:layout_below="@+id/placeEdit"
+        android:layout_marginLeft="16dp"
+        android:layout_toEndOf="@+id/icon_place"
+        android:inputType="date"
+        android:hint="Set date"
+        android:textColor="#000000"
+        />
 
     <ImageView
         android:id="@+id/icon_time"
@@ -61,7 +80,22 @@
         android:layout_height="72dp"
         android:gravity="center"
         app:srcCompat="@drawable/ic_clock_v"
-        android:layout_below="@+id/icon_date" />
+        android:layout_below="@+id/icon_date"
+        android:layout_marginLeft="16dp"/>
+
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="100dp"
+        android:layout_height="72dp"
+        android:gravity="left|center"
+        android:layout_below="@+id/dateText"
+        android:layout_marginLeft="16dp"
+        android:layout_toEndOf="@+id/icon_place"
+        android:inputType="date"
+        android:hint="Set time"
+        android:textColor="#000000"
+        />
 
     <ImageView
         android:id="@+id/icon_comment"
@@ -69,7 +103,8 @@
         android:layout_height="72dp"
         android:gravity="center"
         app:srcCompat="@drawable/ic_comment"
-        android:layout_below="@+id/icon_time" />
+        android:layout_below="@+id/icon_time"
+        android:layout_marginLeft="16dp"/>
 
     <EditText
         android:id="@+id/commentsEdit"
@@ -83,69 +118,36 @@
         android:layout_toEndOf="@+id/icon_comment" />
 
 
-    <ImageView
-        android:id="@+id/icon_photo"
-        android:layout_width="40dp"
-        android:layout_height="72dp"
-        android:gravity="center"
-        app:srcCompat="@drawable/ic_photo"
-        android:layout_below="@+id/icon_comment"/>
-
-    <Button
-        android:id="@+id/photoButton"
-        android:layout_width="100dp"
-        android:layout_margin="16dp"
-        android:layout_height="36dp"
-        android:gravity="center"
-        android:layout_below="@+id/icon_comment"
-        android:layout_marginLeft="16dp"
-        android:layout_toEndOf="@+id/icon_place"
-        android:text="Set Photo"
-        />
-
-
-    <Button
-        android:id="@+id/dateButton"
-        android:layout_width="100dp"
-        android:layout_margin="16dp"
-        android:layout_height="36dp"
-        android:gravity="center"
-        android:layout_below="@+id/placeEdit"
-        android:layout_marginLeft="16dp"
-        android:layout_toEndOf="@+id/icon_place"
-        android:text="Set Date"
-       />
-
-    <Button
-        android:id="@+id/timeButton"
-        android:layout_width="100dp"
-        android:layout_margin="16dp"
-        android:layout_height="36dp"
-        android:gravity="center"
-        android:layout_below="@+id/dateButton"
-        android:layout_marginLeft="16dp"
-        android:layout_toEndOf="@+id/icon_place"
-        android:text="Set Time"
-        />
-
     <Button
         android:id="@+id/doneButton"
         android:layout_width="100dp"
-        android:layout_margin="16dp"
         android:layout_height="36dp"
-        android:layout_marginRight="16dp"
-        android:text="Done"
         android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_marginLeft="16dp"
+        android:text="doneButton"
+        android:layout_marginRight="16dp"
+        android:layout_below="@+id/dateText"
+        android:layout_alignEnd="@+id/commentsEdit"/>
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/photoView"
-        android:visibility="visible"
-        android:layout_below="@+id/icon_photo"
-        android:layout_alignParentStart="true" />
+        android:layout_width="40dp"
+        android:layout_height="176dp"
+        app:srcCompat="@drawable/ic_image"
+        android:id="@+id/eventPhoto"
+        android:scaleType="fitCenter"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:srcCompat="@drawable/ic_photo"
+        android:layout_marginBottom="52dp"
+        android:layout_above="@+id/placeEdit"
+        android:layout_alignEnd="@+id/placeEdit"/>
 
 
 </RelativeLayout>
