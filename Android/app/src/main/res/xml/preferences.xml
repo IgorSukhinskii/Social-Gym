@@ -1,0 +1,7 @@
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <header android:fragment="com.github.si1en7ium.socialgym.ui.main.add_event.AddEventFragment"
+        android:title="Add Event">
+    </header>
+
+</preference-headers>
