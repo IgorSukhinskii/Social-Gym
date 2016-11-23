@@ -107,4 +107,9 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             fab.hide();
         }
     }
+
+
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
 }

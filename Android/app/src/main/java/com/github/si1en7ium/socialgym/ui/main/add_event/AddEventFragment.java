@@ -1,6 +1,5 @@
 package com.github.si1en7ium.socialgym.ui.main.add_event;
 
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -13,11 +12,13 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 
 import com.github.si1en7ium.socialgym.R;
 import com.github.si1en7ium.socialgym.ui.main.BaseMainFragment;
+import com.github.si1en7ium.socialgym.ui.main.MainActivity;
 
 import javax.inject.Inject;
 
@@ -37,14 +38,18 @@ public class AddEventFragment extends BaseMainFragment implements
 
     @Inject AddEventPresenter presenter;
 
-    @BindView(R.id.dateButton) Button dateButton;
-    @BindView(R.id.timeButton) Button timeButton;
+    //@BindView(R.id.dateButton) Button dateButton;
+    //@BindView(R.id.timeButton) Button timeButton;
     @BindView(R.id.doneButton) Button doneButton;
     @BindView(R.id.typeOfSportsSelector) Spinner typeOfSportsSelector;
     @BindView(R.id.placeEdit) EditText locationEdit;
     @BindView(R.id.commentsEdit) EditText descriptionEdit;
+    @BindView(R.id.dateText) TextView dateText;
+    @BindView(R.id.timeText) TextView timeText;
+
 
     public AddEventFragment() {
+
         // Required empty public constructor
     }
 
@@ -62,7 +67,11 @@ public class AddEventFragment extends BaseMainFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fragmentComponent().inject(this);
-    }
+
+        // Set title bar
+            ((MainActivity) getActivity())
+                    .setActionBarTitle("Add event");
+        }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,28 +83,46 @@ public class AddEventFragment extends BaseMainFragment implements
         final SportKindEnumAdaper spinnerAdapter = new SportKindEnumAdaper(getContext());
         typeOfSportsSelector.setAdapter(spinnerAdapter);
 
-        timeButton = (Button) view.findViewById(R.id.timeButton);
-        final DialogFragment timePickerFragment = new TimePickerFragment(this);
-        timeButton.setOnClickListener(new View.OnClickListener() {
+        //timeButton = (Button) view.findViewById(R.id.timeButton);
+        //final DialogFragment timePickerFragment = new TimePickerFragment(this);
+        //timeButton.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+            //public void onClick(View view) {
+              //  timePickerFragment.show(getActivity().getSupportFragmentManager(), "timePicker");
+            //}
+        //});
+
+        //dateButton = (Button) view.findViewById(R.id.dateButton);
+        //final DialogFragment datePickerFragment = new DatePickerFragment(this);
+        //dateButton.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+            //public void onClick(View view) {
+
+//                datePickerFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
+
+//            }
+  //      });
+
+
+        dateText = (TextView) view.findViewById(R.id.dateText);
+
+        final DialogFragment datePickerFragment = new DatePickerFragment(this);
+
+        dateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                datePickerFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
+            }
+        });
 
+        timeText = (TextView) view.findViewById(R.id.timeText);
+        final DialogFragment timePickerFragment = new TimePickerFragment(this);
+        timeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 timePickerFragment.show(getActivity().getSupportFragmentManager(), "timePicker");
             }
         });
-
-        dateButton = (Button) view.findViewById(R.id.dateButton);
-        final DialogFragment datePickerFragment = new DatePickerFragment(this);
-        dateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                datePickerFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
-
-            }
-        });
-
-
 
 
         doneButton = (Button) view.findViewById(R.id.doneButton);
@@ -121,10 +148,15 @@ public class AddEventFragment extends BaseMainFragment implements
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         presenter.setStartTime(hourOfDay, minute);
+        String time=String.valueOf(hourOfDay)+":"+String.valueOf(minute);
+        timeText.setText(time);
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         presenter.setDate(year, month, dayOfMonth);
+        String date=String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(dayOfMonth);
+        dateText.setText(date);
+
     }
 }
