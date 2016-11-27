@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8pt"
+                android:layout_marginRight="8pt"
+    >
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        android:text="Report"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:text="   Why do you think Ivan Gorbunov deserves to be blocked:"/>
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20pt"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="120dp"
+        android:text="Spam"
+        android:textColor="?attr/colorControlNormal"
+        app:buttonTint="@android:color/darker_gray"/>
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/radioButton"
+        android:layout_below="@+id/radioButton"
+        android:text="Pornography"
+        android:textColor="?attr/colorControlNormal"
+        app:buttonTint="@android:color/darker_gray"/>
+
+    <RadioButton
+        android:id="@+id/radioButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/radioButton2"
+        android:layout_below="@+id/radioButton2"
+        android:text="Offensive behavior"
+        android:textColor="?attr/colorControlNormal"
+        app:buttonTint="@android:color/darker_gray"/>
+
+    <RadioButton
+        android:id="@+id/radioButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/radioButton3"
+        android:layout_below="@+id/radioButton3"
+        android:text="Create fake events"
+        android:textColor="?attr/colorControlNormal"
+        app:buttonTint="@android:color/darker_gray"/>
+
+    <RadioButton
+        android:id="@+id/radioButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/radioButton4"
+        android:layout_below="@+id/radioButton4"
+        android:text="Other reason:"
+        android:textColor="?attr/colorControlNormal"
+        app:buttonTint="@android:color/darker_gray"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="290dp"
+        android:background="#B3B3B3"
+        android:padding="10dp"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="386dp"
+        android:background="#B3B3B3"
+        android:padding="10dp"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="290dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Describe the problem here"
+        android:textColor="?attr/colorControlNormal"
+        android:textSize="14sp"/>
+
+</RelativeLayout>
