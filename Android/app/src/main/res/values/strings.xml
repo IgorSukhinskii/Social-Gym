@@ -14,4 +14,6 @@
     <string name="sport_cycling">Cycling</string>
     <string name="sport_combat">Combat sports</string>
     <string name="sport_other">Other</string>
+    <string name="title_top">Top fragment</string>
+
 </resources>
