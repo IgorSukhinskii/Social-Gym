@@ -1,17 +1,26 @@
 package com.github.si1en7ium.socialgym.ui.main;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.github.si1en7ium.socialgym.R;
 import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
+
+import com.github.si1en7ium.socialgym.ui.main.add_event.AddEventFragment;
 import com.github.si1en7ium.socialgym.ui.main.events.EventsFragment;
+import com.github.si1en7ium.socialgym.ui.main.profile.ProfileFragment;
 
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -21,6 +30,8 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.R.attr.fragment;
+
 public class MainActivity extends BaseActivity implements MainMvpView {
 
     private static final String EXTRA_TRIGGER_SYNC_FLAG =
@@ -29,8 +40,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     private  String[] titles;
     private ListView drawerList;
 
-    @Inject MainPresenter mainPresenter;
 
+    @Inject MainPresenter mainPresenter;
 
     @BindView(R.id.fab) FloatingActionButton fab;
     @BindView(R.id.toolbar) Toolbar toolbar;
@@ -69,6 +80,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         drawerList = (ListView)findViewById(R.id.drawer);
         drawerList.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_activated_1, titles));
+        drawerList.setOnItemClickListener( new DrawerItemClickListener());
     }
 
     @Override
@@ -100,8 +112,11 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 .replace(R.id.fragment_placeholder, fragment)
                 .addToBackStack(null)
                 .commit();
-        setFabVisibility(fragment.isFabShown());
+       setFabVisibility(fragment.isFabShown());
     }
+
+
+
 
     @Override
     public void onBackPressed() {
@@ -123,4 +138,34 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
     }
+
+
+    //Обработчик кликов
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectItem(position);
+        }
+    }
+
+    private  void selectItem (int position) {
+        Fragment fragment = null;
+
+        switch (position) {
+            case 1: fragment = new ProfileFragment();
+                break;
+            case 2: fragment = new EventsFragment();
+                break;
+            default: break;
+        }
+
+        if (fragment !=null) {
+            android.app.FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();}
+
+        else {Log.e("MainActivity", "Error");}}
+
+
 }
+
+////////////
