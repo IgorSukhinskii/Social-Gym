@@ -13,6 +13,9 @@ import com.github.si1en7ium.socialgym.R;
 import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
 import com.github.si1en7ium.socialgym.ui.main.events.EventsFragment;
 
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -22,6 +25,9 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     private static final String EXTRA_TRIGGER_SYNC_FLAG =
             "com.github.si1en7ium.socialgym.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
+
+    private  String[] titles;
+    private ListView drawerList;
 
     @Inject MainPresenter mainPresenter;
 
@@ -58,6 +64,11 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         switchToFragment(EventsFragment.newInstance());
 
         mainPresenter.attachView(this);
+
+        titles = getResources().getStringArray(R.array.titles);
+        drawerList = (ListView)findViewById(R.id.drawer);
+        drawerList.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_activated_1, titles));
     }
 
     @Override
