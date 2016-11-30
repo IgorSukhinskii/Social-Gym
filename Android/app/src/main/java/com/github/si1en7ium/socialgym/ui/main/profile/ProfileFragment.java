@@ -20,7 +20,7 @@ import static com.github.si1en7ium.socialgym.R.layout.main_profile_fragment;
 
 
 
-public class ProfileFragment extends BaseFragment {
+public class ProfileFragment extends BaseMainFragment {
     @Inject
     ProfilePresenter profilePresenter;
 
@@ -35,16 +35,6 @@ public class ProfileFragment extends BaseFragment {
         return new ProfileFragment();
     }
 
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        fragmentComponent().inject(this);
-
-        // Set title bar
-        ((MainActivity) getActivity())
-                .setActionBarTitle("My Profile");
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

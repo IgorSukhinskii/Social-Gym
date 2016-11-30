@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import com.github.si1en7ium.socialgym.R;
 import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
 
+import com.github.si1en7ium.socialgym.ui.base.BaseFragment;
 import com.github.si1en7ium.socialgym.ui.main.add_event.AddEventFragment;
 import com.github.si1en7ium.socialgym.ui.main.events.EventsFragment;
 import com.github.si1en7ium.socialgym.ui.main.profile.ProfileFragment;
@@ -115,9 +116,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
        setFabVisibility(fragment.isFabShown());
     }
 
-
-
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -149,7 +147,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     private  void selectItem (int position) {
-        Fragment fragment = null;
+        BaseMainFragment fragment = null;
 
         switch (position) {
             case 1: fragment = new ProfileFragment();
@@ -158,14 +156,9 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 break;
             default: break;
         }
-
         if (fragment !=null) {
-            android.app.FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();}
-
+            switchToFragment(fragment);}
         else {Log.e("MainActivity", "Error");}}
-
-
 }
 
 ////////////
