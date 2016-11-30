@@ -10,4 +10,3 @@ pyvenv.cfg
 pip-selfcheck.json
 __pycache__
 /.idea
-api.db
