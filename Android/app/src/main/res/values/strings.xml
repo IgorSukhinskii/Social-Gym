@@ -6,9 +6,9 @@
     <string name="GlebsName">Глеб</string>
     <string name="dialog_action_ok">OK</string>
     <string name="dialog_error_title">Error</string>
-    <string name="error_loading_events">An error has occured while loading events</string>
+    <string name="error_loading_events">An error has occurred while loading events</string>
 
-    <string name="select_sports">Select sports ...</string>
+    <string name="select_sports">Select sports …</string>
     <string name="sport_running_jogging">Running &amp; Jogging</string>
     <string name="sport_crossfit_fitness">Crossfit &amp; Fitness</string>
     <string name="sport_cycling">Cycling</string>
@@ -16,9 +16,6 @@
     <string name="sport_other">Other</string>
     <string name="title_top">Top fragment</string>
 
-    <string-array name="titles">
-        <item>My profile</item>
-        <item>Event list</item>
-    </string-array>
-
+    <string name="drawer_profile">My profile</string>
+    <string name="drawer_events">Events list</string>
 </resources>
