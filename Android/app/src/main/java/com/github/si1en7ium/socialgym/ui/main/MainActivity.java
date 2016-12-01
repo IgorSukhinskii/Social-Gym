@@ -70,7 +70,38 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 .withName(R.string.drawer_profile)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
+
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        switchToFragment(ProfileFragment.newInstance());
+                        fab.hide();
+                        Timber.i("Clicked drawer item %1$d", position);
+                        return false;
+                    }
+                });
+
+        PrimaryDrawerItem drawerEventsList = new PrimaryDrawerItem()
+                .withIdentifier(2)
+                .withName(R.string.drawer_events_list)
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        switchToFragment(EventsFragment.newInstance());
+                        fab.show();
+                        Timber.i("Clicked drawer item %1$d", position);
+                        return false;
+                    }
+                });
+
+        PrimaryDrawerItem drawerMyEvents = new PrimaryDrawerItem()
+                .withIdentifier(3)
+                .withName(R.string.drawer_my_events)
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        switchToFragment(EventsFragment.newInstance());
+                        fab.show();
                         Timber.i("Clicked drawer item %1$d", position);
                         return false;
                     }
@@ -81,6 +112,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .addDrawerItems(drawerProfile)
+                .addDrawerItems(drawerEventsList)
+                .addDrawerItems(drawerMyEvents)
                 .build();
 
         switchToFragment(EventsFragment.newInstance());

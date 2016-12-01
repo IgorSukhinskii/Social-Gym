@@ -16,6 +16,7 @@
     <string name="sport_other">Other</string>
     <string name="title_top">Top fragment</string>
 
-    <string name="drawer_profile">My profile</string>
-    <string name="drawer_events">Events list</string>
+    <string name="drawer_profile">My Profile</string>
+    <string name="drawer_events_list">Events List</string>
+    <string name="drawer_my_events">My Events</string>
 </resources>
