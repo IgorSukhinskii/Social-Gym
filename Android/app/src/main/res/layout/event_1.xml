@@ -10,7 +10,7 @@
         android:layout_marginLeft="8pt">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/event_head"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -29,12 +29,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_marginStart="22dp"
-            android:layout_marginTop="85dp"
-            app:srcCompat="@drawable/ic_clock_v"/>
+            android:layout_marginTop="85dp"/>
 
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/event_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="85dp"
@@ -43,16 +42,16 @@
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/event_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="85dp"
-            android:layout_toEndOf="@+id/textView"
+            android:layout_toEndOf="@+id/event_type"
             android:text="Honkakatu 7"
             android:textSize="18sp"/>
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/icon_calendar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/imageView5"
@@ -60,44 +59,44 @@
             app:srcCompat="@drawable/ic_calendar"/>
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/event_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView6"
-            android:layout_toEndOf="@+id/imageView6"
+            android:layout_alignBottom="@+id/icon_calendar"
+            android:layout_toEndOf="@+id/icon_calendar"
             android:text="15/08/2017"
             android:textSize="18sp"/>
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/event_icon_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textView11"
-            android:layout_toStartOf="@+id/textView11"
+            android:layout_alignTop="@+id/event_address"
+            android:layout_toStartOf="@+id/event_address"
             app:srcCompat="@drawable/ic_navi"/>
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/event_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="140dp"/>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/event_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView6"
+            android:layout_below="@+id/event_head"
             android:layout_centerHorizontal="true"
             android:text="Running"
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/event_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/imageView8"
+            android:layout_below="@+id/event_image"
             android:layout_marginTop="170dp"
             android:paddingTop="10dp"
             android:text="Wait for you at the most fun sport event of this summer! Take friends and good mood with you!"

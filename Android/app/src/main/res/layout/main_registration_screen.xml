@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="355dp"
+                android:layout_height="561dp"
+                android:layout_marginLeft="8pt">
+
+    <ImageView
+        android:id="@+id/image_registration"
+        android:layout_width="90pt"
+        android:layout_height="90pt"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        app:srcCompat="@mipmap/ic_launcher"/>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_alignBottom="@+id/text_registration_name"
+        android:layout_alignParentStart="true"
+        android:background="#B3B3B3"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/text_registration_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text_registration_name"
+        android:ems="10"
+        android:hint="Surname"
+        android:inputType="textPersonName"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_alignBottom="@+id/text_registration_surname"
+        android:layout_alignParentStart="true"
+        android:background="#B3B3B3"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/text_registration_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text_registration_surname"
+        android:hint="E-mail"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_alignBottom="@+id/text_registration_email"
+        android:layout_alignParentStart="true"
+        android:background="#B3B3B3"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/text_registration_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text_registration_email"
+        android:hint="Password"/>
+
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text_registration_password"
+        android:background="#B3B3B3"
+        android:padding="10dp"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text_registration_check_password"
+        android:background="#B3B3B3"
+        android:padding="10dp"/>
+
+
+    <EditText
+        android:id="@+id/text_registration_check_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/view6"
+        android:hint="Check password"/>
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_alignBottom="@id/text_registration_email"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/text_registration_password"
+        android:background="#B3B3B3"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/text_registration_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/image_registration"
+        android:layout_marginTop="195dp"
+        android:hint="Name"/>
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_alignStart="@+id/image_registration"
+        android:layout_below="@+id/text_registration_check_password"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="REGISTER"/>
+</RelativeLayout>

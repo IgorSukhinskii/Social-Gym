@@ -6,20 +6,19 @@
                 android:layout_marginLeft="8pt">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/image_login"
         android:layout_width="90pt"
         android:layout_height="90pt"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="48dp"
         app:srcCompat="@mipmap/ic_launcher"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/text_login_title"
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView2"
+        android:layout_below="@+id/image_login"
         android:layout_centerHorizontal="true"
         android:text="Welcome!"
         android:textColor="@color/cardview_dark_background"
@@ -27,7 +26,7 @@
         android:textStyle="bold"/>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/text_login_name"
         android:layout_width="wrap_content"
 
         android:layout_height="wrap_content"
@@ -35,7 +34,7 @@
         android:hint="Enter Name"/>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/text_login_password"
         android:layout_width="wrap_content"
 
         android:layout_height="wrap_content"
@@ -44,33 +43,6 @@
         android:hint="Password"
         android:inputType="textPassword"/>
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="205dp"
-        android:layout_marginTop="435dp"
-        android:text="SIGN IN"/>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button3"
-        android:layout_marginLeft="75dp"
-        android:text="Log in"/>
-
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dip"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="345dp"
-        android:background="#B3B3B3"
-        android:padding="10dp"/>
 
     <View
         android:layout_width="fill_parent"
@@ -89,6 +61,16 @@
         android:layout_marginTop="426dp"
         android:background="#B3B3B3"
         android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_alignStart="@+id/image_login"
+        android:layout_below="@+id/text_login_password"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="SIGN IN"/>
 
 
 </RelativeLayout>
