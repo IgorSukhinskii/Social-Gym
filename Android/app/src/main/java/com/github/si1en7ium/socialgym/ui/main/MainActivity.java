@@ -5,29 +5,38 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.github.si1en7ium.socialgym.R;
 import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
 import com.github.si1en7ium.socialgym.ui.main.events.EventsFragment;
+import com.github.si1en7ium.socialgym.ui.main.profile.ProfileFragment;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
     private static final String EXTRA_TRIGGER_SYNC_FLAG =
             "com.github.si1en7ium.socialgym.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
-
     @Inject MainPresenter mainPresenter;
-
-
     @BindView(R.id.fab) FloatingActionButton fab;
     @BindView(R.id.toolbar) Toolbar toolbar;
+    private List<PrimaryDrawerItem> drawerItems;
 
     /**
      * Return an Intent to start this Activity.
@@ -54,6 +63,58 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 mainPresenter.showAddEventScreen();
             }
         });
+
+        // set up drawer items
+        PrimaryDrawerItem drawerProfile = new PrimaryDrawerItem()
+                .withIdentifier(1)
+                .withName(R.string.drawer_profile)
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        switchToFragment(ProfileFragment.newInstance());
+                        fab.hide();
+                        Timber.i("Clicked drawer item %1$d", position);
+                        return false;
+                    }
+                });
+
+        PrimaryDrawerItem drawerEventsList = new PrimaryDrawerItem()
+                .withIdentifier(2)
+                .withName(R.string.drawer_events_list)
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        switchToFragment(EventsFragment.newInstance());
+                        fab.show();
+                        Timber.i("Clicked drawer item %1$d", position);
+                        return false;
+                    }
+                });
+
+        PrimaryDrawerItem drawerMyEvents = new PrimaryDrawerItem()
+                .withIdentifier(3)
+                .withName(R.string.drawer_my_events)
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        switchToFragment(EventsFragment.newInstance());
+                        fab.show();
+                        Timber.i("Clicked drawer item %1$d", position);
+                        return false;
+                    }
+                });
+
+        // set up navigation drawer
+        Drawer drawer = new DrawerBuilder()
+                .withActivity(this)
+                .withToolbar(toolbar)
+                .addDrawerItems(drawerProfile)
+                .addDrawerItems(drawerEventsList)
+                .addDrawerItems(drawerMyEvents)
+                .build();
 
         switchToFragment(EventsFragment.newInstance());
 
@@ -89,7 +150,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 .replace(R.id.fragment_placeholder, fragment)
                 .addToBackStack(null)
                 .commit();
-        setFabVisibility(fragment.isFabShown());
+       setFabVisibility(fragment.isFabShown());
     }
 
     @Override
@@ -112,4 +173,28 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
     }
+
+    private  void selectItem (int position) {
+        BaseMainFragment fragment = null;
+
+        switch (position) {
+            case 1: fragment = new ProfileFragment();
+                break;
+            case 2: fragment = new EventsFragment();
+                break;
+            default: break;
+        }
+        if (fragment !=null) {
+            switchToFragment(fragment);}
+        else {Log.e("MainActivity", "Error");}}
+
+    //Обработчик кликов
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectItem(position);
+        }
+    }
 }
+
+////////////
