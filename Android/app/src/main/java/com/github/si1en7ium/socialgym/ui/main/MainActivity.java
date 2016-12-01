@@ -39,11 +39,11 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
 
 
-
     private static final String EXTRA_TRIGGER_SYNC_FLAG =
             "com.github.si1en7ium.socialgym.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
     @Inject
     MainPresenter mainPresenter;
+
     @BindView(R.id.fab)
     FloatingActionButton fab;
     @BindView(R.id.toolbar)
@@ -68,11 +68,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         activityComponent().inject(this);
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
-
+        switchToFragment(EventsFragment.newInstance());
         setSupportActionBar(toolbar);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +139,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 .addDrawerItems(drawerProfile)
                 .withHeader(R.layout.drawer_header)
                 .build();
-
 
         mainPresenter.attachView(this);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
