@@ -85,7 +85,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         PrimaryDrawerItem drawerProfile = new PrimaryDrawerItem()
                 .withIdentifier(1)
                 .withName(R.string.drawer_profile)
-
+                .withIcon(R.drawable.ic_profile)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
 
@@ -102,6 +102,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         PrimaryDrawerItem drawerEventsList = new PrimaryDrawerItem()
                 .withIdentifier(0)
                 .withName(R.string.drawer_events_list)
+                .withIcon(R.drawable.ic_search)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         switchToFragment(EventsFragment.newInstance());
@@ -114,6 +115,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         PrimaryDrawerItem drawerMyEvents = new PrimaryDrawerItem()
                 .withIdentifier(2)
                 .withName(R.string.drawer_my_events)
+                .withIcon(R.drawable.ic_favorite)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
 
@@ -137,14 +139,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 .withHeader(R.layout.drawer_header)
                 .build();
 
-       // switchToFragment(EventsFragment.newInstance());
 
         mainPresenter.attachView(this);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
