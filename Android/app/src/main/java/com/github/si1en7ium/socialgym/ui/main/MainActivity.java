@@ -1,51 +1,42 @@
 package com.github.si1en7ium.socialgym.ui.main;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.github.si1en7ium.socialgym.R;
 import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
-
-import com.github.si1en7ium.socialgym.ui.base.BaseFragment;
-import com.github.si1en7ium.socialgym.ui.main.add_event.AddEventFragment;
 import com.github.si1en7ium.socialgym.ui.main.events.EventsFragment;
 import com.github.si1en7ium.socialgym.ui.main.profile.ProfileFragment;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static android.R.attr.fragment;
+import timber.log.Timber;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
     private static final String EXTRA_TRIGGER_SYNC_FLAG =
             "com.github.si1en7ium.socialgym.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
-
-    private  String[] titles;
-    private ListView drawerList;
-
-
     @Inject MainPresenter mainPresenter;
-
     @BindView(R.id.fab) FloatingActionButton fab;
     @BindView(R.id.toolbar) Toolbar toolbar;
+    private List<PrimaryDrawerItem> drawerItems;
 
     /**
      * Return an Intent to start this Activity.
@@ -73,15 +64,28 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             }
         });
 
+        // set up drawer items
+        PrimaryDrawerItem drawerProfile = new PrimaryDrawerItem()
+                .withIdentifier(1)
+                .withName(R.string.drawer_profile)
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        Timber.i("Clicked drawer item %1$d", position);
+                        return false;
+                    }
+                });
+
+        // set up navigation drawer
+        Drawer drawer = new DrawerBuilder()
+                .withActivity(this)
+                .withToolbar(toolbar)
+                .addDrawerItems(drawerProfile)
+                .build();
+
         switchToFragment(EventsFragment.newInstance());
 
         mainPresenter.attachView(this);
-
-        titles = getResources().getStringArray(R.array.titles);
-        drawerList = (ListView)findViewById(R.id.drawer);
-        drawerList.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_activated_1, titles));
-        drawerList.setOnItemClickListener( new DrawerItemClickListener());
     }
 
     @Override
@@ -137,15 +141,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         getSupportActionBar().setTitle(title);
     }
 
-
-    //Обработчик кликов
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectItem(position);
-        }
-    }
-
     private  void selectItem (int position) {
         BaseMainFragment fragment = null;
 
@@ -159,6 +154,14 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         if (fragment !=null) {
             switchToFragment(fragment);}
         else {Log.e("MainActivity", "Error");}}
+
+    //Обработчик кликов
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectItem(position);
+        }
+    }
 }
 
 ////////////
