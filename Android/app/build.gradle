@@ -73,4 +73,7 @@ dependencies {
     compile 'com.jakewharton.timber:timber:4.1.2'
     compile "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
     apt "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+    compile 'junit:junit:4.12'
+
 }
