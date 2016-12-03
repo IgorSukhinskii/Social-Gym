@@ -54,6 +54,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+    private Drawer drawer;
 
     /**
      * Return an Intent to start this Activity.
@@ -129,7 +130,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 });
 
         // set up navigation drawer
-        Drawer drawerResult = new DrawerBuilder()
+        drawer = new DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .addDrawerItems(drawerEventsList)
@@ -182,17 +183,17 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     public void onBackPressed() {
 
 
-        //if (drawer.isDrawerOpen()) {
-        //    drawer.closeDrawer();
-        //} else {
-        //    super.onBackPressed();
-        // }
-
-        super.onBackPressed();
-        BaseMainFragment currentFragment = (BaseMainFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.fragment_placeholder);
-        setFabVisibility(currentFragment.isFabShown());
+        if (drawer.isDrawerOpen()) {
+            drawer.closeDrawer();
+        } else {
+            super.onBackPressed();
+            BaseMainFragment currentFragment = (BaseMainFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.fragment_placeholder);
+            setFabVisibility(currentFragment.isFabShown());
+        }
     }
+
+
 
 
     private void setFabVisibility(boolean isFabShown) {
