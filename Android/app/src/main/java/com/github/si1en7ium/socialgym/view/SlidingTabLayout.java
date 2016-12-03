@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 
+import com.github.si1en7ium.socialgym.R;
+
 
 public class SlidingTabLayout extends HorizontalScrollView {
     public interface TabColorizer {
@@ -161,32 +163,101 @@ public class SlidingTabLayout extends HorizontalScrollView {
     private void populateTabStrip() {
         final PagerAdapter adapter = mViewPager.getAdapter();
         final View.OnClickListener tabClickListener = new TabClickListener();
+/////////////////////////////////////////////////////////////////
 
-        for (int i = 0; i < adapter.getCount(); i++) {
-            View tabView = null;
-            TextView tabTitleView = null;
+//    for (int i = 0; i < adapter.getCount(); i++) {
+//        View tabView = null;
+//        TextView tabTitleView = null;
+//
+//        if (mTabViewLayoutId != 0) {
+//            // If there is a custom tab view layout id set, try and inflate it
+//            tabView = LayoutInflater.from(getContext()).inflate(mTabViewLayoutId, mTabStrip,
+//                    false);
+//            tabTitleView = (TextView) tabView.findViewById(mTabViewTextViewId);
+//        }
+//
+//        if (tabView == null) {
+//            tabView = createDefaultTabView(getContext());
+//        }
+//
+//        if (tabTitleView == null && TextView.class.isInstance(tabView)) {
+//            tabTitleView = (TextView) tabView;
+//        }
+//
+//        tabTitleView.setText(adapter.getPageTitle(i));
+//        tabView.setOnClickListener(tabClickListener);
+//
+//        mTabStrip.addView(tabView);
+//    }
 
-            if (mTabViewLayoutId != 0) {
-                // If there is a custom tab view layout id set, try and inflate it
-                tabView = LayoutInflater.from(getContext()).inflate(mTabViewLayoutId, mTabStrip,
-                        false);
-                tabTitleView = (TextView) tabView.findViewById(mTabViewTextViewId);
-            }
+    View tabView1 = null;
+    View tabView2 = null;
+    View tabView3 = null;
+    TextView tabTitleView1 = null;
+    TextView tabTitleView2 = null;
+    TextView tabTitleView3 = null;
 
-            if (tabView == null) {
-                tabView = createDefaultTabView(getContext());
-            }
+    if (mTabViewLayoutId != 0) {
+        // If there is a custom tab view layout id set, try and inflate it
+        tabView1 = LayoutInflater.from(getContext()).inflate(mTabViewLayoutId, mTabStrip,
+                false);
+        tabTitleView1 = (TextView) tabView1.findViewById(mTabViewTextViewId);
 
-            if (tabTitleView == null && TextView.class.isInstance(tabView)) {
-                tabTitleView = (TextView) tabView;
-            }
+        tabView2 = LayoutInflater.from(getContext()).inflate(mTabViewLayoutId, mTabStrip,
+                false);
+        tabTitleView2 = (TextView) tabView2.findViewById(mTabViewTextViewId);
 
-            tabTitleView.setText(adapter.getPageTitle(i));
-            tabView.setOnClickListener(tabClickListener);
-
-            mTabStrip.addView(tabView);
-        }
+        tabView3 = LayoutInflater.from(getContext()).inflate(mTabViewLayoutId, mTabStrip,
+                false);
+        tabTitleView3 = (TextView) tabView3.findViewById(mTabViewTextViewId);
     }
+
+    if (tabView1 == null) {
+        tabView1 = createDefaultTabView(getContext());
+    }
+
+    if (tabTitleView1 == null && TextView.class.isInstance(tabView1)) {
+        tabTitleView1 = (TextView) tabView1;
+    }
+
+        tabTitleView1.setText(R.string.tab1);
+    tabView1.setOnClickListener(tabClickListener);
+
+    mTabStrip.addView(tabView1);
+
+        if (tabView2 == null) {
+            tabView2 = createDefaultTabView(getContext());
+        }
+
+        if (tabTitleView2 == null && TextView.class.isInstance(tabView2)) {
+            tabTitleView2 = (TextView) tabView2;
+        }
+
+        tabTitleView2.setText(R.string.tab2);
+        tabView2.setOnClickListener(tabClickListener);
+
+        mTabStrip.addView(tabView2);
+
+        if (tabView3 == null) {
+            tabView3 = createDefaultTabView(getContext());
+        }
+
+        if (tabTitleView3 == null && TextView.class.isInstance(tabView3)) {
+            tabTitleView3 = (TextView) tabView3;
+        }
+
+        tabTitleView3.setText(R.string.tab3);
+        tabView3.setOnClickListener(tabClickListener);
+
+        mTabStrip.addView(tabView3);
+
+
+
+
+        /////////////////////////////////////////////////////////////////////////
+}
+
+
 
     @Override
     protected void onAttachedToWindow() {

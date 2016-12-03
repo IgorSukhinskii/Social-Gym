@@ -57,7 +57,7 @@ public class MyEventsFragment extends BaseMainFragment {
          */
         @Override
         public int getCount() {
-            return 10;
+            return 3;
         }
 
         /**

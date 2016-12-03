@@ -104,7 +104,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
         PrimaryDrawerItem drawerEventsList = new PrimaryDrawerItem()
                 .withIdentifier(0)
-                .withName(R.string.drawer_events_list)
+                .withName(R.string.drawer_search)
                 .withIcon(R.drawable.ic_search)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {

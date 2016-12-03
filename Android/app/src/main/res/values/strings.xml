@@ -17,7 +17,10 @@
     <string name="title_top">Top fragment</string>
 
     <string name="drawer_profile">My Profile</string>
-    <string name="drawer_events_list">Search Events</string>
-    <string name="drawer_my_events">My Events</string>
+    <string name="drawer_search">Search</string>
+    <string name="drawer_my_events">Events List</string>
     <string name="page">Page:</string>
+    <string name="tab1">INTERESTED</string>
+    <string name="tab2">ATTENDED</string>
+    <string name="tab3">MY EVENTS</string>
 </resources>
