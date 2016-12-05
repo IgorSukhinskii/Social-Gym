@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:text="Account settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingStart="10dp"
+        android:layout_weight="0.02"
+        android:textSize="14sp" />
+    <TextView
+        android:text="Change Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:paddingStart="10dp"
+        android:textSize="18sp"
+        android:paddingBottom="10dp"
+        android:paddingTop="7dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:hint="Old email"
+        android:paddingStart="7dp"
+        android:textSize="16sp"
+        android:id="@+id/editText" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:hint=" New email"
+        android:paddingStart="7dp"
+        android:textSize="16sp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:hint="Repeat email"
+        android:paddingStart="7dp"
+        android:textSize="16sp" />
+
+    <Button
+        android:text="Accept"
+        android:layout_width="match_parent"
+        android:layout_height="36dp" />
+
+    <TextView
+        android:text="Change password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:paddingBottom="10dp"
+        android:paddingTop="7dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:hint=" Old password"
+        android:paddingStart="7dp"
+        android:textSize="16sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:hint=" New password"
+        android:paddingStart="7dp"
+        android:textSize="16sp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:hint="Repeat password"
+        android:paddingStart="7dp"
+        android:textSize="16sp" />
+    <Button
+        android:text="Accept"
+        android:layout_width="match_parent"
+        android:layout_height="36dp" />
+    <TextView
+        android:text="Notifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:paddingBottom="10dp"
+        android:paddingTop="7dp" />
+
+    <Switch
+        android:text="Turn notifications on/off"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.02"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp" />
+</LinearLayout>
