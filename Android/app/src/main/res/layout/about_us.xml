@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:text="Social Gym does an amazing job of helping it's users to find other sports-oriented people in their community based on their sport interests and organizing sport events, such as cycling, hiking, camping, etc. \n\n\n Version: 1.0.0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:paddingTop="23dp"
+        android:paddingStart="22dp"
+        android:paddingRight="20dp"
+        android:layout_weight="0.18" />
+</LinearLayout>
