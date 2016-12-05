@@ -17,6 +17,7 @@ import android.widget.ListView;
 import com.github.si1en7ium.socialgym.R;
 import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
 import com.github.si1en7ium.socialgym.ui.main.events.EventsFragment;
+import com.github.si1en7ium.socialgym.ui.main.my_events.MyEventsFragment;
 import com.github.si1en7ium.socialgym.ui.main.profile.ProfileFragment;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -54,6 +55,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+    private Drawer drawer;
 
     /**
      * Return an Intent to start this Activity.
@@ -102,7 +104,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
         PrimaryDrawerItem drawerEventsList = new PrimaryDrawerItem()
                 .withIdentifier(0)
-                .withName(R.string.drawer_events_list)
+                .withName(R.string.drawer_search)
                 .withIcon(R.drawable.ic_search)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
@@ -121,7 +123,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                     @Override
 
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        switchToFragment(EventsFragment.newInstance());
+                        switchToFragment(MyEventsFragment.newInstance());
                         fab.show();
                         Timber.i("Clicked drawer item %1$d", position);
                         return false;
@@ -129,7 +131,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 });
 
         // set up navigation drawer
-        Drawer drawerResult = new DrawerBuilder()
+        drawer = new DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .addDrawerItems(drawerEventsList)
@@ -182,17 +184,17 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     public void onBackPressed() {
 
 
-        //if (drawer.isDrawerOpen()) {
-        //    drawer.closeDrawer();
-        //} else {
-        //    super.onBackPressed();
-        // }
-
-        super.onBackPressed();
-        BaseMainFragment currentFragment = (BaseMainFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.fragment_placeholder);
-        setFabVisibility(currentFragment.isFabShown());
+        if (drawer.isDrawerOpen()) {
+            drawer.closeDrawer();
+        } else {
+            super.onBackPressed();
+            BaseMainFragment currentFragment = (BaseMainFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.fragment_placeholder);
+            setFabVisibility(currentFragment.isFabShown());
+        }
     }
+
+
 
 
     private void setFabVisibility(boolean isFabShown) {
