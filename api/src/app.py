@@ -1,10 +1,15 @@
 from flask import Flask, request
 import json
 import sqlite3
+import bcrypt
+import uuid
 
 app = Flask(__name__)
 
 conn = sqlite3.connect('api.db')
+
+user_tokens = {}
+
 
 @app.route("/events", methods=['GET', 'POST'])
 def events():
@@ -45,6 +50,39 @@ def events():
         }, c.fetchall()))
         return json.dumps(res)
 
+
+@app.route("/login", methods=['POST'])
+def login():
+    login_data = request.get_json()
+    c = conn.cursor()
+    c.execute("select password, id FROM users WHERE login = ?", login_data["login"])
+    password, id = c.fetchone()
+    if bcrypt.checkpw(login_data["password"], password):
+        token = uuid.uuid4().hex
+        user_tokens[id] = token
+        return json.dumps({
+            'result': 'success',
+            'token': token,
+            'id': id
+        })
+    else:
+        return json.dumps({'result': 'fail'})
+
+
+@app.route("/register", methods=['POST'])
+def register():
+    register_data = request.get_json()
+    password = bcrypt.hashpw(register_data['password'], bcrypt.gensalt())
+    c = conn.cursor()
+    c.execute("INSERT INTO users (name, avatarUrl, birthDate, isFemale, about, login, password) VALUES (?,?,?,?,?,?,?)",
+              (register_data['name'],
+               register_data['avatarUrl'],
+               register_data['birthDate'],
+               register_data['isFemale'],
+               register_data['about'],
+               register_data['login'],
+               password))
+    return json.dumps({'result': 'success'})
 
 if __name__ == "__main__":
     app.run()
