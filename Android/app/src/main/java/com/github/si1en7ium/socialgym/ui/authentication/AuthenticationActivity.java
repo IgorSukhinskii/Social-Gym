@@ -24,6 +24,7 @@ public class AuthenticationActivity extends BaseActivity {
     @BindView(R.id.text_registration_password) EditText _passwordText;
     @BindView(R.id.button_register) Button _signupButton;
     @BindView(R.id.link_login) TextView _loginLink;
+    @BindView(R.id.text_confirm_password) EditText editTextConfirmPassword;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,6 +74,7 @@ public class AuthenticationActivity extends BaseActivity {
         String name = _nameText.getText().toString();
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
+        String confirmPassword = editTextConfirmPassword.getText().toString();
 
         // TODO: Implement your own signup logic here.
         new android.os.Handler().postDelayed(
@@ -105,6 +107,8 @@ public class AuthenticationActivity extends BaseActivity {
         String name = _nameText.getText().toString();
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
+        String confirmPassword = editTextConfirmPassword.getText()
+                .toString();
 
         if (name.isEmpty() || name.length() < 3) {
             _nameText.setError("at least 3 characters");
@@ -125,6 +129,13 @@ public class AuthenticationActivity extends BaseActivity {
             valid = false;
         } else {
             _passwordText.setError(null);
+        }
+
+        if (!password.equals(confirmPassword)) {
+            editTextConfirmPassword.setError(null);
+            valid = true;
+        } else {
+            editTextConfirmPassword.setError("Password does not match");
         }
 
         return valid;
