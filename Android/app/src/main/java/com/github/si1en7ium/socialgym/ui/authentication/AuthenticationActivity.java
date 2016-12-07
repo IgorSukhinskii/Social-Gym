@@ -1,4 +1,4 @@
-package com.github.si1en7ium.socialgym.ui.main.register;
+package com.github.si1en7ium.socialgym.ui.authentication;
 
 
 import android.app.ProgressDialog;
@@ -16,7 +16,7 @@ import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RegisterActivity extends BaseActivity {
+public class AuthenticationActivity extends BaseActivity {
     private static final String TAG = "SignupActivity";
 
     @BindView(R.id.text_registration_name) EditText _nameText;
@@ -65,7 +65,7 @@ public class RegisterActivity extends BaseActivity {
 
         _signupButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this);
+        final ProgressDialog progressDialog = new ProgressDialog(AuthenticationActivity.this);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();

@@ -20,7 +20,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".ui.main.register.RegisterActivity"
+            android:name=".ui.authentication.AuthenticationActivity"
             android:label="Register"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
