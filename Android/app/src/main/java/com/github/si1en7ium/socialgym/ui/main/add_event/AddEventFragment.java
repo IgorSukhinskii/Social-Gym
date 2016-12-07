@@ -3,7 +3,11 @@ package com.github.si1en7ium.socialgym.ui.main.add_event;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -46,6 +50,7 @@ public class AddEventFragment extends BaseMainFragment implements
     @BindView(R.id.commentsEdit) EditText descriptionEdit;
     @BindView(R.id.dateText) TextView dateText;
     @BindView(R.id.timeText) TextView timeText;
+    private SportKindEnumAdaper spinnerAdapter;
 
 
     public AddEventFragment() {
@@ -68,6 +73,8 @@ public class AddEventFragment extends BaseMainFragment implements
         super.onCreate(savedInstanceState);
         fragmentComponent().inject(this);
 
+        setHasOptionsMenu(true);
+
         // Set title bar
             ((MainActivity) getActivity())
                     .setActionBarTitle("Add event");
@@ -80,7 +87,7 @@ public class AddEventFragment extends BaseMainFragment implements
 
         ButterKnife.bind(this, view);
 
-        final SportKindEnumAdaper spinnerAdapter = new SportKindEnumAdaper(getContext());
+        spinnerAdapter = new SportKindEnumAdaper(getContext());
         typeOfSportsSelector.setAdapter(spinnerAdapter);
 
         //timeButton = (Button) view.findViewById(R.id.timeButton);
@@ -139,11 +146,27 @@ public class AddEventFragment extends BaseMainFragment implements
         return view;
     }
 
+
     @Override
     public boolean isFabShown() {
         return false;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d("onOptionsItemSelected","yes");
+        switch (item.getItemId()) {
+            case R.id.menu_done:
+                presenter.setLocation(locationEdit.getText().toString());
+                presenter.setDescription(descriptionEdit.getText().toString());
+                presenter.setSportKind(spinnerAdapter.getItem(typeOfSportsSelector.getSelectedItemPosition()));
+                presenter.postEvent();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+
+        }
+    }
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -158,5 +181,11 @@ public class AddEventFragment extends BaseMainFragment implements
         String date=String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(dayOfMonth);
         dateText.setText(date);
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_fragm_save, menu);
+        super.onCreateOptionsMenu(menu,inflater);
     }
 }
