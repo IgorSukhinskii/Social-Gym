@@ -15,20 +15,20 @@
         app:srcCompat="@mipmap/ic_launcher"/>
 
     <EditText
-        android:id="@+id/text_login_name"
+        android:id="@+id/text_login_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/image_login"
         android:layout_marginTop="208dp"
-        android:hint="Enter Name"/>
+        android:hint="Enter e-mail"/>
 
 
     <View
         android:id="@+id/view_L1"
         android:layout_width="fill_parent"
         android:layout_height="1dip"
-        android:layout_alignBottom="@+id/text_login_name"
+        android:layout_alignBottom="@+id/text_login_email"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="386dp"
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/text_login_name"
+        android:layout_below="@+id/text_login_email"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
