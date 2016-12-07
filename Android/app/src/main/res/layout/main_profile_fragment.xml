@@ -23,7 +23,7 @@
         android:layout_marginBottom="11dp"
         android:id="@+id/textViewGenderAge"
         android:textColor="@color/cardview_light_background"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:layout_alignEnd="@+id/imageViewProfilePic" />
 
     <TextView
@@ -34,7 +34,7 @@
         android:layout_alignStart="@+id/textViewGenderAge"
         android:layout_marginBottom="5dp"
         android:id="@+id/textViewName"
-        android:textSize="30sp"
+        android:textSize="34sp"
         android:textColor="@color/cardview_light_background" />
 
     <TextView
@@ -46,7 +46,7 @@
         android:layout_marginTop="14dp"
         android:id="@+id/textViewPreferencesLabel"
         android:textStyle="normal|bold"
-        android:textSize="18sp" />
+        android:textSize="22sp" />
 
     <TextView
         android:text="Running, jogging and sprinting"
@@ -55,7 +55,8 @@
         android:id="@+id/textViewPreferences"
         android:layout_marginTop="4dp"
         android:layout_below="@+id/textViewPreferencesLabel"
-        android:layout_alignStart="@+id/textViewPreferencesLabel" />
+        android:layout_alignStart="@+id/textViewPreferencesLabel"
+        android:textSize="18sp" />
 
     <TextView
         android:text="About me"
@@ -63,20 +64,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/textViewAboutMeLabel"
         android:textStyle="normal|bold"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:layout_below="@+id/textViewPreferences"
         android:layout_alignStart="@+id/textViewPreferences"
         android:layout_marginTop="21dp" />
 
     <TextView
-        android:text="Hey fellow sporsmen! Join me and my friends and my awesome events. "
+        android:text="i'm a pretty good sprinter and I organize events on this platform. Feel free to explore and join me one day!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textViewAboutMe"
         android:layout_below="@+id/textViewAboutMeLabel"
         android:layout_alignParentEnd="true"
         android:layout_alignStart="@+id/textViewAboutMeLabel"
-        android:layout_marginTop="4dp" />
+        android:layout_marginTop="4dp"
+        android:textSize="18sp" />
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
@@ -84,8 +86,9 @@
         android:clickable="true"
         app:fabSize="normal"
         app:srcCompat="@drawable/ic_create_white_24dp"
-        android:layout_marginEnd="14dp"
         android:id="@+id/floatingActionButton"
-        android:layout_alignTop="@+id/textViewGenderAge"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginEnd="18dp"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/textViewPreferences"
+        android:layout_marginBottom="15dp" />
 </RelativeLayout>
