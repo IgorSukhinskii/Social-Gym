@@ -19,4 +19,11 @@
     <string name="drawer_profile">My Profile</string>
     <string name="drawer_events_list">Search Events</string>
     <string name="drawer_my_events">My Events</string>
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+        <item>Prefer not to specify</item>
+    </string-array>
+
 </resources>
