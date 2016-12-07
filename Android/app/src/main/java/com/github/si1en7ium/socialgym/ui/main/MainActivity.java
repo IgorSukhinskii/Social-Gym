@@ -204,7 +204,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     private void setFabVisibility(boolean isFabShown) {
         if (isFabShown && !fab.isShown()) {
-            fab.show();
+            fab.hide();
         } else if (!isFabShown && fab.isShown()) {
             fab.hide();
         }

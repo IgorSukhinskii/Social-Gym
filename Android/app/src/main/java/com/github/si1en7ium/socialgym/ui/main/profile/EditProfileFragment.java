@@ -24,7 +24,7 @@ import static com.github.si1en7ium.socialgym.R.layout.main_edit_profile_fragment
 public class EditProfileFragment extends BaseMainFragment {
     @Inject
     ProfilePresenter profilePresenter;
-    @BindView(R.id.typeOfSportsSelector) Spinner typeOfSportsSelector;
+  //  @BindView(R.id.typeOfSportsSelector) Spinner typeOfSportsSelector;
 
     public EditProfileFragment() {
 
