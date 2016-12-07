@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.github.si1en7ium.socialgym.ui.main.MainActivity;
 import com.github.si1en7ium.socialgym.view.SlidingTabLayout;
 
 
@@ -36,6 +37,7 @@ public class MyEventsFragment extends BaseMainFragment {
 
         return rootView;
     }
+
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {

@@ -85,7 +85,7 @@
         app:fabSize="normal"
         app:srcCompat="@drawable/ic_create_white_24dp"
         android:layout_marginEnd="14dp"
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fabEditProfile"
         android:layout_alignTop="@+id/textViewGenderAge"
         android:layout_alignParentEnd="true" />
 </RelativeLayout>

@@ -19,6 +19,7 @@ import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
 import com.github.si1en7ium.socialgym.ui.main.events.EventsFragment;
 import com.github.si1en7ium.socialgym.ui.main.my_events.MyEventsFragment;
 import com.github.si1en7ium.socialgym.ui.main.profile.ProfileFragment;
+import com.github.si1en7ium.socialgym.ui.main.profile.EditProfileFragment;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
@@ -36,6 +37,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import timber.log.Timber;
+
 public class MainActivity extends BaseActivity implements MainMvpView {
 
 
@@ -77,6 +79,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         ButterKnife.bind(this);
         switchToFragment(EventsFragment.newInstance());
         setSupportActionBar(toolbar);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,6 +132,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                         return false;
                     }
                 });
+
+
 
         // set up navigation drawer
         drawer = new DrawerBuilder()

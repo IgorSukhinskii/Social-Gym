@@ -26,10 +26,12 @@
     </string-array>
     <string name="drawer_search">Search</string>
     <string name="drawer_my_events">Events List</string>
+    <string name="drawer_settings">Settings</string>
     <string name="page">Page:</string>
     <string name="tab1">INTERESTED</string>
     <string name="tab2">ATTENDED</string>
     <string name="tab3">MY EVENTS</string>
+
 
     <string name="done_name">DONE</string>
 </resources>
