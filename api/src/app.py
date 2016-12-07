@@ -62,7 +62,8 @@ def login():
         user_tokens[id] = token
         return json.dumps({
             'result': 'success',
-            'token': token
+            'token': token,
+            'id': id
         })
     else:
         return json.dumps({'result': 'fail'})
