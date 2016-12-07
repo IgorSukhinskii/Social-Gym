@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="355dp"
-                android:layout_height="561dp"
-                android:layout_marginLeft="8pt">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+    >
 
-    <ImageView
-        android:id="@+id/image_registration"
-        android:layout_width="90pt"
-        android:layout_height="90pt"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        app:srcCompat="@mipmap/ic_launcher"/>
+    <RelativeLayout
+        android:layout_width="355dp"
+        android:layout_height="561dp"
+        android:layout_marginStart="8pt">
 
-    <EditText
-        android:id="@+id/text_registration_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/image_registration"
-        android:layout_marginTop="208dp"
-        android:hint="Full name"
-        android:inputType="textPersonName"/>
 
-    <View
+        <EditText
+            android:id="@+id/text_registration_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="41dp"
+            android:hint="Full name"
+            android:inputType="textPersonName"
+            android:textColor="#fff"
+            android:textColorHint="#ddd"
+            />
+
+        <View
         android:id="@+id/view_R1"
         android:layout_width="fill_parent"
         android:layout_height="1dip"
@@ -39,7 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/text_registration_name"
-        android:hint="E-mail"/>
+        android:hint="E-mail"
+        android:textColor="#fff"
+        android:textColorHint="#ddd"/>
 
     <View
         android:id="@+id/view_R2"
@@ -56,7 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/text_registration_email"
-        android:hint="Password"/>
+        android:hint="Password"
+        android:textColor="#fff"
+        android:textColorHint="#ddd"/>
 
 
     <View
@@ -64,18 +67,51 @@
         android:layout_width="fill_parent"
         android:layout_height="1dip"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/text_registration_password"
+        android:layout_below="@id/text_registration_password"
         android:background="#B3B3B3"
         android:padding="10dp"/>
 
+        <EditText
+            android:id="@+id/text_confirm_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_registration_password"
+            android:hint="Confirm password"
+            android:textColor="#fff"
+            android:textColorHint="#ddd"/>
 
-    <Button
-        android:id="@+id/button_register"
-        android:layout_width="200dp"
-        android:layout_height="48dp"
-        android:layout_alignStart="@+id/image_registration"
-        android:layout_below="@+id/text_registration_password"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
-        android:text="REGISTER"/>
+
+        <View
+            android:id="@+id/view_R4"
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_confirm_password"
+            android:background="#B3B3B3"
+            android:padding="10dp"/>
+
+
+        <Button
+            android:id="@+id/button_register"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/text_confirm_password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="32dp"
+            android:text="CREATE ACCOUNT"/>
+
+        <TextView
+            android:id="@+id/link_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button_register"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Already a member? Login"
+            android:textColor="#fff"
+            android:textSize="16dip"/>
+    </RelativeLayout>
 </RelativeLayout>
