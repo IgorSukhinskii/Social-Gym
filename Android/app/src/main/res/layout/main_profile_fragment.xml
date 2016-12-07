@@ -5,92 +5,87 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:srcCompat="@mipmap/sample_profile_picture"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="36dp"
-        android:id="@+id/image_profile"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_gender_age"
-        android:layout_below="@+id/text_name"
-        android:layout_alignStart="@+id/text_name"
-        android:layout_marginTop="0dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_gender_age"
-        android:layout_alignStart="@+id/text_gender_age"
-        android:layout_marginTop="40dp"
-        android:id="@+id/text_activities"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:fontFamily="sans-serif"
-        android:textSize="14sp"
-        android:textColor="?android:attr/textColorSecondary" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="?android:attr/textColorPrimary"
-        android:layout_below="@+id/image_profile"
-        android:layout_alignStart="@+id/image_profile" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_activities"
-        android:layout_alignStart="@+id/edit_about_me"
-        android:layout_marginTop="60dp"
-        android:id="@+id/text_about_me_label" />
-
-    <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:layout_marginTop="0dp"
-        android:id="@+id/edit_about_me"
-        android:layout_below="@id/text_about_me_label"
-        android:layout_alignStart="@+id/text_activities"
-        android:labelFor="@id/text_about_me_label" />
+        app:srcCompat="@drawable/usain_bolt_wide_pic"
+        android:id="@+id/imageViewProfilePic"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitStart"
+        android:layout_height="235dp" />
 
     <TextView
+        android:text="Male, 30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/image_profile"
-        android:layout_toEndOf="@id/image_profile"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="31dp"
-        android:id="@+id/text_events_created"
+        android:layout_alignBottom="@+id/imageViewProfilePic"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="11dp"
+        android:id="@+id/textViewGenderAge"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="20sp"
+        android:layout_alignEnd="@+id/imageViewProfilePic" />
+
+    <TextView
+        android:text="Usain Bolt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewGenderAge"
+        android:layout_alignStart="@+id/textViewGenderAge"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/textViewName"
+        android:textSize="30sp"
+        android:textColor="@color/cardview_light_background" />
+
+    <TextView
+        android:text="Sports preferences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageViewProfilePic"
+        android:layout_alignStart="@+id/textViewGenderAge"
+        android:layout_marginTop="14dp"
+        android:id="@+id/textViewPreferencesLabel"
+        android:textStyle="normal|bold"
         android:textSize="18sp" />
 
     <TextView
+        android:text="Running, jogging and sprinting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:id="@+id/text_events_visited"
-        android:layout_below="@+id/text_events_created"
-        android:layout_alignStart="@+id/text_events_created"
-        android:textSize="18sp" />
+        android:id="@+id/textViewPreferences"
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/textViewPreferencesLabel"
+        android:layout_alignStart="@+id/textViewPreferencesLabel" />
 
     <TextView
+        android:text="About me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_activities"
-        android:layout_alignStart="@+id/text_activities"
-        android:layout_marginTop="5dp"
-        android:id="@+id/text_something"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="18sp" />
+        android:id="@+id/textViewAboutMeLabel"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:layout_below="@+id/textViewPreferences"
+        android:layout_alignStart="@+id/textViewPreferences"
+        android:layout_marginTop="21dp" />
 
+    <TextView
+        android:text="Hey fellow sporsmen! Join me and my friends and my awesome events. "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewAboutMe"
+        android:layout_below="@+id/textViewAboutMeLabel"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/textViewAboutMeLabel"
+        android:layout_marginTop="4dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_create_white_24dp"
+        android:layout_marginEnd="14dp"
+        android:id="@+id/floatingActionButton"
+        android:layout_alignTop="@+id/textViewGenderAge"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

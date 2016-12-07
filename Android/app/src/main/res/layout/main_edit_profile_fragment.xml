@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        app:srcCompat="@drawable/usain_bolt_wide_pic"
+        android:id="@+id/imageViewProfilePic"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitStart"
+        android:layout_height="235dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_camera_alt_white_24dp"
+        android:layout_marginEnd="12dp"
+        android:id="@+id/floatingActionButtonPhoto"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="204dp" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/ic_account_circle_black_24dp"
+        android:layout_below="@+id/imageViewProfilePic"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="11dp"
+        android:id="@+id/imageViewName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Usain Bolt"
+        android:ems="10"
+        android:layout_below="@+id/imageViewProfilePic"
+        android:layout_toEndOf="@+id/imageViewName"
+        android:layout_marginStart="11dp"
+        android:id="@+id/editTextName"
+        android:textColor="@color/colorPrimaryText" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/ic_calendar"
+        android:id="@+id/imageViewCalendar"
+        android:layout_alignTop="@+id/editTextDateOfBirth"
+        android:layout_toStartOf="@+id/editTextName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editTextDateOfBirth"
+        android:text="Date of birth"
+        android:layout_below="@+id/editTextName"
+        android:layout_alignStart="@+id/editTextName"
+        android:layout_marginTop="11dp"
+        android:textColor="@color/colorPrimaryText" />
+
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerGender"
+        android:layout_below="@+id/editTextDateOfBirth"
+        android:layout_alignStart="@+id/editTextDateOfBirth" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/ic_directions_run_black_24dp"
+        android:layout_marginTop="12dp"
+        android:id="@+id/imageView4"
+        android:layout_below="@+id/imageViewGender"
+        android:layout_alignEnd="@+id/imageViewGender" />
+
+    <ImageView
+        app:srcCompat="@drawable/ic_gender"
+        android:id="@+id/imageViewGender"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/editTextDateOfBirth"
+        android:layout_alignEnd="@+id/imageViewCalendar" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text|textPersonName"
+        android:text="Running, jogging and sprinting"
+        android:ems="10"
+        android:layout_below="@+id/imageViewGender"
+        android:layout_alignStart="@+id/spinnerGender"
+        android:id="@+id/editTextSports"
+        android:textColor="@color/colorPrimaryText" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/ic_comment"
+        android:layout_below="@+id/imageView4"
+        android:layout_alignStart="@+id/imageView4"
+        android:layout_marginTop="20dp"
+        android:id="@+id/imageViewAboutMe" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editTextAboutMe"
+        android:layout_alignTop="@+id/imageViewAboutMe"
+        android:layout_alignStart="@+id/editTextSports"
+        android:layout_toStartOf="@+id/floatingActionButtonPhoto"
+        android:text="i'm a pretty good sprinter and I organize events on this platform. Feel free to explore and join me one day!"
+        android:textColor="@color/colorPrimaryText" />
+
+</RelativeLayout>

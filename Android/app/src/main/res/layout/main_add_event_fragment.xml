@@ -49,7 +49,8 @@
         android:textSize="14sp"
         android:layout_below="@+id/typeOfSportsSelector"
         android:hint="Type here place of event "
-        android:layout_toEndOf="@+id/icon_place"/>
+        android:layout_toEndOf="@+id/icon_place"
+        android:textColor="@color/colorPrimaryText" />
 
 
     <ImageView
@@ -71,7 +72,7 @@
         android:layout_toEndOf="@+id/icon_place"
         android:inputType="date"
         android:hint="Set date"
-        android:textColor="#000000"
+        android:textColor="@color/colorPrimaryText"
         />
 
     <ImageView
@@ -94,7 +95,7 @@
         android:layout_toEndOf="@+id/icon_place"
         android:inputType="date"
         android:hint="Set time"
-        android:textColor="#000000"
+        android:textColor="@color/colorPrimaryText"
         />
 
     <ImageView
@@ -115,7 +116,8 @@
         android:textSize="14sp"
         android:hint="Type here comments for event"
         android:layout_below="@+id/icon_time"
-        android:layout_toEndOf="@+id/icon_comment" />
+        android:layout_toEndOf="@+id/icon_comment"
+        android:textColor="@color/colorPrimaryText" />
 
 
     <ImageView

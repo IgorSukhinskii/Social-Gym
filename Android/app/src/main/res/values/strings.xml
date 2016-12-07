@@ -17,6 +17,13 @@
     <string name="title_top">Top fragment</string>
 
     <string name="drawer_profile">My Profile</string>
+    <string name="drawer_events_list">Search Events</string>
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+        <item>Prefer not to specify</item>
+    </string-array>
     <string name="drawer_search">Search</string>
     <string name="drawer_my_events">Events List</string>
     <string name="page">Page:</string>
