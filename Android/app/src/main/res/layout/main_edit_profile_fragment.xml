@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        app:srcCompat="@drawable/Usain_bolt_wide_pic"
+        android:id="@+id/imageViewProfilePic"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitStart"
+        android:layout_height="235dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_camera_alt_white_24dp"
+        android:layout_marginEnd="12dp"
+        android:id="@+id/floatingActionButtonPhoto"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="204dp" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/ic_account_circle_black_24dp"
+        android:layout_below="@+id/imageViewProfilePic"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="11dp"
+        android:id="@+id/imageView" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Usain Bolt"
+        android:ems="10"
+        android:layout_below="@+id/imageViewProfilePic"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_marginStart="11dp"
+        android:id="@+id/editTextName" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/ic_calendar"
+        android:id="@+id/imageView2"
+        android:layout_alignTop="@+id/editTextDateOfBirth"
+        android:layout_toStartOf="@+id/editTextName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editTextDateOfBirth"
+        android:text="Date of birth"
+        android:layout_below="@+id/editTextName"
+        android:layout_alignStart="@+id/editTextName"
+        android:layout_marginTop="11dp" />
+
+    <ImageView
+        app:srcCompat="@drawable/ic_gender"
+        android:id="@+id/imageView3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/editTextDateOfBirth"
+        android:layout_alignEnd="@+id/imageView2" />
+
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerGender"
+        android:layout_below="@+id/editTextDateOfBirth"
+        android:layout_alignStart="@+id/editTextDateOfBirth" />
+</RelativeLayout>
