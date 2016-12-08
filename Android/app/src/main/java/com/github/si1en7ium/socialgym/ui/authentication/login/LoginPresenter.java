@@ -56,6 +56,7 @@ public class LoginPresenter extends BasePresenter<LoginMvpView> {
 
                     @Override
                     public void onError(Throwable e) {
+                        getMvpView().goToMainScreen(); // bypass login for now
                     }
 
                     @Override
