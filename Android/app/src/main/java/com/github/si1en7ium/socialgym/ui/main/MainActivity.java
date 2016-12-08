@@ -112,7 +112,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         switchToFragment(EventsFragment.newInstance());
-                        fab.show();
+                            fab.show();
                         Timber.i("Clicked drawer item %1$d", position);
                         return false;
                     }

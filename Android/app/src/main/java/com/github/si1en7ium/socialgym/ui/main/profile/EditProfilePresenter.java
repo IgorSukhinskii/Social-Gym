@@ -6,10 +6,16 @@ import javax.inject.Inject;
 
 
 class EditProfilePresenter extends BasePresenter<ProfileMvpView> {
-
+    int year;
+    int month;
+    int day;
     @Inject
     EditProfilePresenter() {
     }
-
+    void setDate(int year, int month, int day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
 
 }

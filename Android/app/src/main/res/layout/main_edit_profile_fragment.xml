@@ -59,7 +59,7 @@
         android:layout_below="@+id/imageViewName"
         android:layout_marginTop="24dp" />
 
-    <EditText
+    <TextView
         android:layout_width="400dp"
         android:layout_height="54dp"
         android:inputType="date"
@@ -70,7 +70,8 @@
         android:textColor="@color/colorPrimaryText"
         android:layout_toEndOf="@+id/imageViewCalendar"
         android:layout_below="@+id/editTextName"
-        android:layout_marginLeft="11dp" />
+        android:layout_marginLeft="11dp"
+        />
 
     <ImageView
         android:layout_width="30dp"
