@@ -38,7 +38,7 @@ public class LoginPresenter extends BasePresenter<LoginMvpView> {
     public void login() {
         String error = validate();
         if (error != null) {
-            // show error
+            getMvpView().showError(error);
             return;
         }
         LoginRequest request = LoginRequest.builder()
