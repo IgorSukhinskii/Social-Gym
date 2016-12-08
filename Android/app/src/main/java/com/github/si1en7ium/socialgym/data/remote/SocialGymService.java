@@ -3,15 +3,14 @@ package com.github.si1en7ium.socialgym.data.remote;
 
 import com.github.si1en7ium.socialgym.data.SocialGymTypeAdapterFactory;
 import com.github.si1en7ium.socialgym.models.Event;
-import com.github.si1en7ium.socialgym.models.PostEventResult;
+import com.github.si1en7ium.socialgym.models.LoginRequest;
+import com.github.si1en7ium.socialgym.models.LoginResponse;
+import com.github.si1en7ium.socialgym.models.RegistrationRequest;
+import com.github.si1en7ium.socialgym.models.SimpleResponse;
 import com.github.si1en7ium.socialgym.util.datetime.ParcelableDateTime;
 import com.github.si1en7ium.socialgym.util.datetime.ParcelableDuration;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
@@ -23,7 +22,6 @@ import org.joda.time.ReadableDateTime;
 import org.joda.time.ReadableDuration;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.List;
 
 import retrofit2.Retrofit;
@@ -41,7 +39,13 @@ public interface SocialGymService {
     Observable<List<Event>> getEvents();
 
     @POST("events")
-    Observable<PostEventResult> postEvent(@Body Event event);
+    Observable<SimpleResponse> postEvent(@Body Event event);
+
+    @POST("register")
+    Observable<SimpleResponse> register(@Body RegistrationRequest registrationRequest);
+
+    @POST("login")
+    Observable<LoginResponse> login(@Body LoginRequest loginRequest);
 
     class Creator {
         public static SocialGymService newSocialGymService() {

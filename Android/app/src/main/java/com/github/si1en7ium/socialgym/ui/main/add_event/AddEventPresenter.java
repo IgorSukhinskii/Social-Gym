@@ -3,7 +3,7 @@ package com.github.si1en7ium.socialgym.ui.main.add_event;
 
 import com.github.si1en7ium.socialgym.data.remote.SocialGymService;
 import com.github.si1en7ium.socialgym.models.Event;
-import com.github.si1en7ium.socialgym.models.PostEventResult;
+import com.github.si1en7ium.socialgym.models.SimpleResponse;
 import com.github.si1en7ium.socialgym.models.SportKind;
 import com.github.si1en7ium.socialgym.models.User;
 import com.github.si1en7ium.socialgym.ui.base.BasePresenter;
@@ -18,6 +18,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 class AddEventPresenter extends BasePresenter<AddEventMvpView> {
+    private final SocialGymService api;
     private int year;
     private int month;
     private int day;
@@ -27,8 +28,6 @@ class AddEventPresenter extends BasePresenter<AddEventMvpView> {
     private String description;
     private String location;
     private SportKind sportKind;
-
-    private final SocialGymService api;
 
     @Inject
     public AddEventPresenter(SocialGymService api) {
@@ -77,7 +76,7 @@ class AddEventPresenter extends BasePresenter<AddEventMvpView> {
         api.postEvent(event)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<PostEventResult>() {
+                .subscribe(new Subscriber<SimpleResponse>() {
                     @Override
                     public void onCompleted() {
 
@@ -89,7 +88,7 @@ class AddEventPresenter extends BasePresenter<AddEventMvpView> {
                     }
 
                     @Override
-                    public void onNext(PostEventResult postEventResult) {
+                    public void onNext(SimpleResponse simpleResponse) {
 
                     }
                 });
