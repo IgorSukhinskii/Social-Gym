@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.github.si1en7ium.socialgym.R;
 import com.github.si1en7ium.socialgym.ui.main.BaseMainFragment;
+import com.github.si1en7ium.socialgym.ui.main.MainActivity;
 
 import android.widget.TextView;
 
@@ -54,6 +55,7 @@ public class EditProfileFragment extends BaseMainFragment implements DatePickerD
 
 
         ButterKnife.bind(this, view);
+        ((MainActivity)getActivity()).setToolbarTitle("Edit Event");
 
         editTextDateOfBirth = (TextView) view.findViewById(R.id.editTextDateOfBirth);
 

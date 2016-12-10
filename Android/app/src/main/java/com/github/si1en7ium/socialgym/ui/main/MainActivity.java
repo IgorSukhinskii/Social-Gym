@@ -44,13 +44,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     private static final String EXTRA_TRIGGER_SYNC_FLAG =
             "com.github.si1en7ium.socialgym.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
-    @Inject
-    MainPresenter mainPresenter;
+    @Inject MainPresenter mainPresenter;
 
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    @BindView(R.id.fab) FloatingActionButton fab;
+    @BindView(R.id.toolbar) Toolbar toolbar;
     private List<PrimaryDrawerItem> drawerItems;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -183,6 +180,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 .addToBackStack(null)
                 .commit();
         setFabVisibility(fragment.isFabShown());
+    }
+
+    public void setToolbarTitle(CharSequence title) {
+        toolbar.setTitle(title);
     }
 
     @Override
