@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.github.si1en7ium.socialgym.ui.main.MainActivity;
 import com.github.si1en7ium.socialgym.view.SlidingTabLayout;
 
+import butterknife.ButterKnife;
 
 
 public class MyEventsFragment extends BaseMainFragment {
@@ -34,6 +35,10 @@ public class MyEventsFragment extends BaseMainFragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.my_events, container, false);
+
+        ButterKnife.bind(this, rootView);
+        ((MainActivity)getActivity()).setToolbarTitle("Events List");
+
 
         return rootView;
     }

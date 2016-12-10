@@ -196,7 +196,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
     TextView tabTitleView1 = null;
     TextView tabTitleView2 = null;
     TextView tabTitleView3 = null;
-
     if (mTabViewLayoutId != 0) {
         // If there is a custom tab view layout id set, try and inflate it
         tabView1 = LayoutInflater.from(getContext()).inflate(mTabViewLayoutId, mTabStrip,
@@ -210,6 +209,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
         tabView3 = LayoutInflater.from(getContext()).inflate(mTabViewLayoutId, mTabStrip,
                 false);
         tabTitleView3 = (TextView) tabView3.findViewById(mTabViewTextViewId);
+
     }
 
     if (tabView1 == null) {

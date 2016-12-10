@@ -85,22 +85,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         });
 
         // set up drawer items
-        PrimaryDrawerItem drawerProfile = new PrimaryDrawerItem()
-                .withIdentifier(1)
-                .withName(R.string.drawer_profile)
-                .withIcon(R.drawable.ic_profile)
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        switchToFragment(ProfileFragment.newInstance());
-                        fab.hide();
-                        Timber.i("Clicked drawer item %1$d", position);
-                        return false;
-                    }
-                });
-
-        DividerDrawerItem dividerDrawerItem = new DividerDrawerItem();
 
         PrimaryDrawerItem drawerEventsList = new PrimaryDrawerItem()
                 .withIdentifier(0)
@@ -109,14 +93,14 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         switchToFragment(EventsFragment.newInstance());
-                            fab.show();
+                        fab.show();
                         Timber.i("Clicked drawer item %1$d", position);
                         return false;
                     }
                 });
 
         PrimaryDrawerItem drawerMyEvents = new PrimaryDrawerItem()
-                .withIdentifier(2)
+                .withIdentifier(1)
                 .withName(R.string.drawer_my_events)
                 .withIcon(R.drawable.ic_favorite)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -131,6 +115,42 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 });
 
 
+        PrimaryDrawerItem drawerProfile = new PrimaryDrawerItem()
+                .withIdentifier(2)
+                .withName(R.string.drawer_profile)
+                .withIcon(R.drawable.ic_profile)
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        switchToFragment(ProfileFragment.newInstance());
+                        fab.hide();
+                        Timber.i("Clicked drawer item %1$d", position);
+                        return false;
+                    }
+                });
+
+
+        PrimaryDrawerItem drawerSettings = new PrimaryDrawerItem()
+                .withIdentifier(3)
+                .withName(R.string.drawer_settings)
+                .withIcon(R.drawable.ic_settings)
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        switchToFragment(MyEventsFragment.newInstance());
+                        fab.show();
+                        Timber.i("Clicked drawer item %1$d", position);
+                        return false;
+                    }
+                });
+
+        DividerDrawerItem dividerDrawerItem = new DividerDrawerItem();
+
+
+
+
 
         // set up navigation drawer
         drawer = new DrawerBuilder()
@@ -141,6 +161,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 .addDrawerItems(drawerMyEvents)
                 .addDrawerItems(dividerDrawerItem)
                 .addDrawerItems(drawerProfile)
+                .addDrawerItems(dividerDrawerItem)
+                .addDrawerItems(drawerSettings)
                 .withHeader(R.layout.drawer_header)
                 .build();
 

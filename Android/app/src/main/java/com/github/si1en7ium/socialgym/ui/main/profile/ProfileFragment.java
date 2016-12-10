@@ -4,6 +4,7 @@ package com.github.si1en7ium.socialgym.ui.main.profile;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,8 @@ public class ProfileFragment extends BaseMainFragment {
         View view = inflater.inflate(main_profile_fragment, container, false);
 
         ButterKnife.bind(this, view);
+
+        ((MainActivity)getActivity()).setToolbarTitle("My Profile");
 
         fabEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override

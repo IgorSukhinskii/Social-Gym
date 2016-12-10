@@ -31,7 +31,5 @@
     <string name="tab1">INTERESTED</string>
     <string name="tab2">ATTENDED</string>
     <string name="tab3">MY EVENTS</string>
-
-
     <string name="done_name">DONE</string>
 </resources>

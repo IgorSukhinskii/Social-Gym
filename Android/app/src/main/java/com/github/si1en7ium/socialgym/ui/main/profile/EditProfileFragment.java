@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 import static com.github.si1en7ium.socialgym.R.layout.main_edit_profile_fragment;
 
 
-public class EditProfileFragment extends BaseMainFragment implements DatePickerDialog.OnDateSetListener {
+public class EditProfileFragment extends BaseMainFragment implements DatePickerDialog.OnDateSetListener, EditProfileMvpView {
 
     @Inject EditProfilePresenter editProfilePresenter;
   //  @BindView(R.id.typeOfSportsSelector) Spinner typeOfSportsSelector;
@@ -47,6 +47,13 @@ public class EditProfileFragment extends BaseMainFragment implements DatePickerD
  //       String date=String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(dayOfMonth);
   //     dateText.setText(date);
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        fragmentComponent().inject(this);
+        editProfilePresenter.attachView(this);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

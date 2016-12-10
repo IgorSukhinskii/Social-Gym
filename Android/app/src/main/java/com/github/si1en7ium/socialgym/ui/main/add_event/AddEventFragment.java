@@ -75,9 +75,7 @@ public class AddEventFragment extends BaseMainFragment implements
 
         setHasOptionsMenu(true);
 
-        // Set title bar
-            ((MainActivity) getActivity())
-                    .setActionBarTitle("Add event");
+
         }
 
     @Override
@@ -86,6 +84,8 @@ public class AddEventFragment extends BaseMainFragment implements
         View view = inflater.inflate(main_add_event_fragment, container, false);
 
         ButterKnife.bind(this, view);
+
+        ((MainActivity)getActivity()).setToolbarTitle("Add Event");
 
         spinnerAdapter = new SportKindEnumAdaper(getContext());
         typeOfSportsSelector.setAdapter(spinnerAdapter);
