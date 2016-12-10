@@ -20,6 +20,7 @@ import com.github.si1en7ium.socialgym.ui.main.events.EventsFragment;
 import com.github.si1en7ium.socialgym.ui.main.my_events.MyEventsFragment;
 import com.github.si1en7ium.socialgym.ui.main.profile.ProfileFragment;
 import com.github.si1en7ium.socialgym.ui.main.profile.EditProfileFragment;
+import com.github.si1en7ium.socialgym.ui.main.settings.SettingsFragment;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
@@ -139,8 +140,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                     @Override
 
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        switchToFragment(MyEventsFragment.newInstance());
-                        fab.show();
+                        switchToFragment(SettingsFragment.newInstance());
+                        fab.hide();
                         Timber.i("Clicked drawer item %1$d", position);
                         return false;
                     }
