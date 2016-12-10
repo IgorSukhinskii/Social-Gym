@@ -74,13 +74,9 @@ def register():
     register_data = request.get_json()
     password = bcrypt.hashpw(register_data['password'], bcrypt.gensalt())
     c = conn.cursor()
-    c.execute("INSERT INTO users (name, avatarUrl, birthDate, isFemale, about, login, password) VALUES (?,?,?,?,?,?,?)",
+    c.execute("INSERT INTO users (name, login, password) VALUES (?,?,?)",
               (register_data['name'],
-               register_data['avatarUrl'],
-               register_data['birthDate'],
-               register_data['isFemale'],
-               register_data['about'],
-               register_data['login'],
+               register_data['email'],
                password))
     return json.dumps({'result': 'success'})
 
