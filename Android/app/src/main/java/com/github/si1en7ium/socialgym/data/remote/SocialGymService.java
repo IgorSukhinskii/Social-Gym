@@ -2,6 +2,7 @@ package com.github.si1en7ium.socialgym.data.remote;
 
 
 import com.github.si1en7ium.socialgym.data.SocialGymTypeAdapterFactory;
+import com.github.si1en7ium.socialgym.models.CheckTokenRequest;
 import com.github.si1en7ium.socialgym.models.Event;
 import com.github.si1en7ium.socialgym.models.LoginRequest;
 import com.github.si1en7ium.socialgym.models.LoginResponse;
@@ -34,6 +35,7 @@ import rx.Observable;
 
 public interface SocialGymService {
     String ENDPOINT = "http://10.0.2.2:5000";
+//    String ENDPOINT = "http://188.166.73.100:8080/";
 
     @GET("events")
     Observable<List<Event>> getEvents();
@@ -46,6 +48,9 @@ public interface SocialGymService {
 
     @POST("login")
     Observable<LoginResponse> login(@Body LoginRequest loginRequest);
+
+    @POST("check")
+    Observable<SimpleResponse> checkToken(@Body CheckTokenRequest checkTokenRequest);
 
     class Creator {
         public static SocialGymService newSocialGymService() {

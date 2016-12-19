@@ -3,6 +3,7 @@ package com.github.si1en7ium.socialgym.ui.authentication.login;
 
 import android.support.annotation.Nullable;
 
+import com.github.si1en7ium.socialgym.data.local.Preferences;
 import com.github.si1en7ium.socialgym.data.remote.SocialGymService;
 import com.github.si1en7ium.socialgym.models.LoginRequest;
 import com.github.si1en7ium.socialgym.models.LoginResponse;
@@ -13,15 +14,18 @@ import javax.inject.Inject;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class LoginPresenter extends BasePresenter<LoginMvpView> {
     private final SocialGymService api;
+    private final Preferences prefs;
     private String email;
     private String password;
 
     @Inject
-    public LoginPresenter(SocialGymService api) {
+    public LoginPresenter(SocialGymService api, Preferences prefs) {
         this.api = api;
+        this.prefs = prefs;
     }
 
     @Nullable
@@ -56,13 +60,16 @@ public class LoginPresenter extends BasePresenter<LoginMvpView> {
 
                     @Override
                     public void onError(Throwable e) {
-                        getMvpView().goToMainScreen(); // bypass login for now
+                        getMvpView().showError(e.getLocalizedMessage());
                     }
 
                     @Override
                     public void onNext(LoginResponse loginResponse) {
+                        Timber.d("Login response: %s", loginResponse.toString());
                         if (loginResponse.result().equals("success")) {
                             // save auth info
+                            prefs.setUserId(loginResponse.id());
+                            prefs.setUserToken(loginResponse.token());
                             // go to main screen
                             getMvpView().goToMainScreen();
                         }

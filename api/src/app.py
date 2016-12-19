@@ -55,9 +55,9 @@ def events():
 def login():
     login_data = request.get_json()
     c = conn.cursor()
-    c.execute("select password, id FROM users WHERE login = ?", login_data["login"])
+    c.execute("select password, id FROM users WHERE login = ?", (login_data["email"],))
     password, id = c.fetchone()
-    if bcrypt.checkpw(login_data["password"], password):
+    if bcrypt.checkpw(login_data["password"].encode('utf-8'), password):
         token = uuid.uuid4().hex
         user_tokens[id] = token
         return json.dumps({
@@ -72,13 +72,26 @@ def login():
 @app.route("/register", methods=['POST'])
 def register():
     register_data = request.get_json()
-    password = bcrypt.hashpw(register_data['password'], bcrypt.gensalt())
+    password = bcrypt.hashpw(register_data['password'].encode('utf-8'), bcrypt.gensalt())
     c = conn.cursor()
     c.execute("INSERT INTO users (name, login, password) VALUES (?,?,?)",
               (register_data['name'],
                register_data['email'],
                password))
+    conn.commit()
     return json.dumps({'result': 'success'})
+
+
+@app.route("/check", methods=['POST'])
+def check_token():
+    token_data = request.get_json()
+    user_id = token_data['id']
+    user_token = token_data['token']
+    actual_token = user_tokens.get(user_id)
+    if (user_token == actual_token):
+        return json.dumps({'result': 'success'})
+    else:
+        return json.dumps({'result': 'fail'})
 
 if __name__ == "__main__":
     app.run()
