@@ -7,12 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.si1en7ium.socialgym.R;
-import com.github.si1en7ium.socialgym.models.Event;
+import com.github.si1en7ium.socialgym.models.MyEventsResponse;
 import com.github.si1en7ium.socialgym.ui.main.BaseMainFragment;
 import com.github.si1en7ium.socialgym.ui.main.MainActivity;
 import com.github.si1en7ium.socialgym.view.SlidingTabLayout;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -26,7 +24,7 @@ public class MyEventsFragment extends BaseMainFragment implements MyEventsMvpVie
     @Inject MyEventsPresenter presenter;
     @BindView(R.id.sliding_tabs) SlidingTabLayout slidingTabLayout;
     @BindView(R.id.viewpager) ViewPager viewPager;
-    private MyEventsPagerAdapter adapter;
+    @Inject MyEventsPagerAdapter adapter;
     public MyEventsFragment() {
     }
 
@@ -42,10 +40,9 @@ public class MyEventsFragment extends BaseMainFragment implements MyEventsMvpVie
 
         ButterKnife.bind(this, rootView);
 
-        adapter = new MyEventsPagerAdapter(getActivity());
-
         fragmentComponent().inject(this);
         presenter.attachView(this);
+        adapter.setActivity(getActivity());
 
         ((MainActivity)getActivity()).setToolbarTitle("Events List");
 
@@ -66,8 +63,10 @@ public class MyEventsFragment extends BaseMainFragment implements MyEventsMvpVie
     }
 
     @Override
-    public void showEvents(List<Event> events) {
-        adapter.updateAttended(events);
+    public void showEvents(MyEventsResponse events) {
+        adapter.updateInterested(events.interested());
+        adapter.updateAttended(events.going());
+        adapter.updateMyEvents(events.myEvents());
         adapter.notifyDataSetChanged();
     }
 }

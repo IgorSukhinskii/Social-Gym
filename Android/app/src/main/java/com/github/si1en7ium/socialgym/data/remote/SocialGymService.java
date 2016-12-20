@@ -6,6 +6,7 @@ import com.github.si1en7ium.socialgym.models.Authenticated;
 import com.github.si1en7ium.socialgym.models.Event;
 import com.github.si1en7ium.socialgym.models.LoginRequest;
 import com.github.si1en7ium.socialgym.models.LoginResponse;
+import com.github.si1en7ium.socialgym.models.MyEventsResponse;
 import com.github.si1en7ium.socialgym.models.RegistrationRequest;
 import com.github.si1en7ium.socialgym.models.SimpleResponse;
 import com.github.si1en7ium.socialgym.models.UserCredentials;
@@ -51,6 +52,15 @@ public interface SocialGymService {
 
     @POST("check")
     Observable<SimpleResponse> checkToken(@Body UserCredentials userCredentials);
+
+    @POST("interested")
+    Observable<SimpleResponse> interestedInEvent(@Body Authenticated<Integer> eventId);
+
+    @POST("going")
+    Observable<SimpleResponse> goingToEvent(@Body Authenticated<Integer> eventId);
+
+    @POST("events/my")
+    Observable<MyEventsResponse> getMyEvents(@Body Authenticated<String> param);
 
     class Creator {
         public static SocialGymService newSocialGymService() {

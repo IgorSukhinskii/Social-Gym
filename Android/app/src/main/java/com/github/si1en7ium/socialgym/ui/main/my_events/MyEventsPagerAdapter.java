@@ -9,25 +9,32 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.si1en7ium.socialgym.R;
+import com.github.si1en7ium.socialgym.data.local.Preferences;
+import com.github.si1en7ium.socialgym.data.remote.SocialGymService;
 import com.github.si1en7ium.socialgym.models.Event;
 import com.github.si1en7ium.socialgym.ui.main.events.EventsAdapter;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import timber.log.Timber;
 
 class MyEventsPagerAdapter extends PagerAdapter {
-    private final Activity activity;
-
     private final EventsAdapter interestedAdapter;
     private final EventsAdapter attendedAdapter;
     private final EventsAdapter myEventsAdapter;
+    private Activity activity;
 
-    MyEventsPagerAdapter(Activity activity) {
+    @Inject
+    MyEventsPagerAdapter(SocialGymService api, Preferences prefs) {
+        interestedAdapter = new EventsAdapter(api, prefs);
+        attendedAdapter = new EventsAdapter(api, prefs);
+        myEventsAdapter = new EventsAdapter(api, prefs);
+    }
+
+    public void setActivity(Activity activity) {
         this.activity = activity;
-        interestedAdapter = new EventsAdapter();
-        attendedAdapter = new EventsAdapter();
-        myEventsAdapter = new EventsAdapter();
     }
 
     /**

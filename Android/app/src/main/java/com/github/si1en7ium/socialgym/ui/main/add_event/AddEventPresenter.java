@@ -7,7 +7,6 @@ import com.github.si1en7ium.socialgym.models.Authenticated;
 import com.github.si1en7ium.socialgym.models.Event;
 import com.github.si1en7ium.socialgym.models.SimpleResponse;
 import com.github.si1en7ium.socialgym.models.SportKind;
-import com.github.si1en7ium.socialgym.models.User;
 import com.github.si1en7ium.socialgym.ui.base.BasePresenter;
 
 import org.joda.time.DateTime;
@@ -67,7 +66,6 @@ class AddEventPresenter extends BasePresenter<AddEventMvpView> {
 
     void postEvent() {
         Event event = Event.builder()
-                .creator(User.builder().name("asdf").avatarUrl("").build())
                 .description(this.description)
                 .imageUrl("")
                 .location(this.location)
