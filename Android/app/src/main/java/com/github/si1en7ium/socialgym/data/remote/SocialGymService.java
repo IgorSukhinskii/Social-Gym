@@ -2,12 +2,13 @@ package com.github.si1en7ium.socialgym.data.remote;
 
 
 import com.github.si1en7ium.socialgym.data.SocialGymTypeAdapterFactory;
-import com.github.si1en7ium.socialgym.models.CheckTokenRequest;
+import com.github.si1en7ium.socialgym.models.Authenticated;
 import com.github.si1en7ium.socialgym.models.Event;
 import com.github.si1en7ium.socialgym.models.LoginRequest;
 import com.github.si1en7ium.socialgym.models.LoginResponse;
 import com.github.si1en7ium.socialgym.models.RegistrationRequest;
 import com.github.si1en7ium.socialgym.models.SimpleResponse;
+import com.github.si1en7ium.socialgym.models.UserCredentials;
 import com.github.si1en7ium.socialgym.util.datetime.ParcelableDateTime;
 import com.github.si1en7ium.socialgym.util.datetime.ParcelableDuration;
 import com.google.gson.Gson;
@@ -29,7 +30,6 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 import rx.Observable;
 
@@ -37,11 +37,11 @@ public interface SocialGymService {
     String ENDPOINT = "http://10.0.2.2:5000";
 //    String ENDPOINT = "http://188.166.73.100:8080/";
 
-    @GET("events")
-    Observable<List<Event>> getEvents();
+    @POST("events/get")
+    Observable<List<Event>> getEvents(@Body Authenticated<String> query);
 
-    @POST("events")
-    Observable<SimpleResponse> postEvent(@Body Event event);
+    @POST("events/post")
+    Observable<SimpleResponse> postEvent(@Body Authenticated<Event> event);
 
     @POST("register")
     Observable<SimpleResponse> register(@Body RegistrationRequest registrationRequest);
@@ -50,7 +50,7 @@ public interface SocialGymService {
     Observable<LoginResponse> login(@Body LoginRequest loginRequest);
 
     @POST("check")
-    Observable<SimpleResponse> checkToken(@Body CheckTokenRequest checkTokenRequest);
+    Observable<SimpleResponse> checkToken(@Body UserCredentials userCredentials);
 
     class Creator {
         public static SocialGymService newSocialGymService() {

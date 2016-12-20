@@ -1,6 +1,8 @@
 package com.github.si1en7ium.socialgym.ui.main.my_events;
 
+import com.github.si1en7ium.socialgym.data.local.Preferences;
 import com.github.si1en7ium.socialgym.data.remote.SocialGymService;
+import com.github.si1en7ium.socialgym.models.Authenticated;
 import com.github.si1en7ium.socialgym.models.Event;
 import com.github.si1en7ium.socialgym.ui.base.BasePresenter;
 
@@ -16,14 +18,16 @@ import timber.log.Timber;
 
 class MyEventsPresenter extends BasePresenter<MyEventsMvpView> {
     private SocialGymService api;
+    private Preferences preferences;
 
     @Inject
-    MyEventsPresenter(SocialGymService api) {
+    MyEventsPresenter(SocialGymService api, Preferences preferences) {
         this.api = api;
+        this.preferences = preferences;
     }
 
     void loadEvents() {
-        api.getEvents()
+        api.getEvents(Authenticated.fromPreferences(preferences, ""))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<List<Event>>() {

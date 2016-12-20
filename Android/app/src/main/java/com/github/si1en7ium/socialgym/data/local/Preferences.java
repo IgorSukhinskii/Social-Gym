@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.github.si1en7ium.socialgym.injection.ApplicationContext;
+import com.github.si1en7ium.socialgym.models.UserCredentials;
 
 import javax.inject.Inject;
 
@@ -40,5 +41,12 @@ public final class Preferences {
     public void setUserToken(String userToken) {
         this.userToken = userToken;
         settings.edit().putString(USER_TOKEN, userToken).apply();
+    }
+
+    public UserCredentials getCredentials() {
+        return UserCredentials.builder()
+                .id(this.getUserId())
+                .token(this.getUserToken())
+                .build();
     }
 }

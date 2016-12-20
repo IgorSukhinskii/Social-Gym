@@ -1,7 +1,9 @@
 package com.github.si1en7ium.socialgym.ui.main.add_event;
 
 
+import com.github.si1en7ium.socialgym.data.local.Preferences;
 import com.github.si1en7ium.socialgym.data.remote.SocialGymService;
+import com.github.si1en7ium.socialgym.models.Authenticated;
 import com.github.si1en7ium.socialgym.models.Event;
 import com.github.si1en7ium.socialgym.models.SimpleResponse;
 import com.github.si1en7ium.socialgym.models.SportKind;
@@ -19,6 +21,7 @@ import rx.schedulers.Schedulers;
 
 class AddEventPresenter extends BasePresenter<AddEventMvpView> {
     private final SocialGymService api;
+    private final Preferences preferences;
     private int year;
     private int month;
     private int day;
@@ -30,8 +33,9 @@ class AddEventPresenter extends BasePresenter<AddEventMvpView> {
     private SportKind sportKind;
 
     @Inject
-    public AddEventPresenter(SocialGymService api) {
+    public AddEventPresenter(SocialGymService api, Preferences preferences) {
         this.api = api;
+        this.preferences = preferences;
     }
 
     void setStartTime(int hour, int minute) {
@@ -73,7 +77,7 @@ class AddEventPresenter extends BasePresenter<AddEventMvpView> {
                 .duration(Duration.standardHours(1))
                 .build();
 
-        api.postEvent(event)
+        api.postEvent(Authenticated.fromPreferences(preferences, event))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<SimpleResponse>() {

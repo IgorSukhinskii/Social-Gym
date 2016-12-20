@@ -3,8 +3,8 @@ package com.github.si1en7ium.socialgym.ui.authentication;
 
 import com.github.si1en7ium.socialgym.data.local.Preferences;
 import com.github.si1en7ium.socialgym.data.remote.SocialGymService;
-import com.github.si1en7ium.socialgym.models.CheckTokenRequest;
 import com.github.si1en7ium.socialgym.models.SimpleResponse;
+import com.github.si1en7ium.socialgym.models.UserCredentials;
 import com.github.si1en7ium.socialgym.ui.base.BasePresenter;
 
 import javax.inject.Inject;
@@ -24,7 +24,7 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationMvpView
     }
 
     public void checkUserToken() {
-        CheckTokenRequest request = CheckTokenRequest.builder()
+        UserCredentials request = UserCredentials.builder()
                 .id(prefs.getUserId())
                 .token(prefs.getUserToken())
                 .build();

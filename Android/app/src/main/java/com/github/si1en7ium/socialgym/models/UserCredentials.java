@@ -6,13 +6,13 @@ import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 
 @AutoValue
-public abstract class CheckTokenRequest {
+public abstract class UserCredentials {
     public static Builder builder() {
-        return new AutoValue_CheckTokenRequest.Builder();
+        return new AutoValue_UserCredentials.Builder();
     }
 
-    public static TypeAdapter<CheckTokenRequest> typeAdapter(Gson gson) {
-        return new AutoValue_CheckTokenRequest.GsonTypeAdapter(gson);
+    public static TypeAdapter<UserCredentials> typeAdapter(Gson gson) {
+        return new AutoValue_UserCredentials.GsonTypeAdapter(gson);
     }
 
     public abstract int id();
@@ -27,6 +27,6 @@ public abstract class CheckTokenRequest {
 
         public abstract Builder token(String token);
 
-        public abstract CheckTokenRequest build();
+        public abstract UserCredentials build();
     }
 }
