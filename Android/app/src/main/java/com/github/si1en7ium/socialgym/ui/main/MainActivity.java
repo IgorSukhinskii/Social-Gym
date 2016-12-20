@@ -119,12 +119,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         PrimaryDrawerItem drawerProfile = new PrimaryDrawerItem()
                 .withIdentifier(2)
                 .withName(R.string.drawer_profile)
-                .withIcon(R.drawable.ic_profile)
+                .withIcon(R.drawable.ic_reply_black_24dp)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
 
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        switchToFragment(ProfileFragment.newInstance());
+                        //switchToFragment(ProfileFragment.newInstance());
                         fab.hide();
                         Timber.i("Clicked drawer item %1$d", position);
                         return false;
@@ -173,12 +173,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    @Override
+/*    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

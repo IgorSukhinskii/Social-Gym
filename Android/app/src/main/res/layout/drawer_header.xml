@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:adjustViewBounds="true"
@@ -16,30 +17,16 @@
     android:src="@drawable/wallpaper"
     android:adjustViewBounds="true" />
 
- <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/icon_profile"
-        android:layout_width="108dp"
-        android:layout_height="108dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_profile_white"
-        android:adjustViewBounds="true" />
 
-
-      <TextView
+    <TextView
           android:id="@+id/placeEdit"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:gravity="left"
-          android:layout_marginTop="16dp"
+          android:layout_marginTop="156dp"
           android:layout_marginLeft="16dp"
           android:textSize="18sp"
           android:text="Name Surname"
-          android:layout_below="@+id/icon_profile"
           android:textColor="#FFFFFF"
           android:adjustViewBounds="true" />
-  -->
-  </RelativeLayout>
+</RelativeLayout>

@@ -134,6 +134,9 @@ public class SlidingTabLayout extends HorizontalScrollView {
      * Create a default view to be used for tabs. This is called if a custom tab view is not set via
      * {@link #setCustomTabView(int, int)}.
      */
+
+
+
     protected TextView createDefaultTabView(Context context) {
         TextView textView = new TextView(context);
         textView.setGravity(Gravity.CENTER);
@@ -196,10 +199,15 @@ public class SlidingTabLayout extends HorizontalScrollView {
     TextView tabTitleView1 = null;
     TextView tabTitleView2 = null;
     TextView tabTitleView3 = null;
+
+
     if (mTabViewLayoutId != 0) {
         // If there is a custom tab view layout id set, try and inflate it
+
+
         tabView1 = LayoutInflater.from(getContext()).inflate(mTabViewLayoutId, mTabStrip,
                 false);
+
         tabTitleView1 = (TextView) tabView1.findViewById(mTabViewTextViewId);
 
         tabView2 = LayoutInflater.from(getContext()).inflate(mTabViewLayoutId, mTabStrip,
@@ -214,13 +222,14 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
     if (tabView1 == null) {
         tabView1 = createDefaultTabView(getContext());
+
     }
 
     if (tabTitleView1 == null && TextView.class.isInstance(tabView1)) {
         tabTitleView1 = (TextView) tabView1;
     }
 
-        tabTitleView1.setText(R.string.tab1);
+      tabTitleView1.setText(R.string.tab1);
     tabView1.setOnClickListener(tabClickListener);
 
     mTabStrip.addView(tabView1);
