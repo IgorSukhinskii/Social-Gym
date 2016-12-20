@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class RegisterPresenter extends BasePresenter<RegisterMvpView> {
     private final SocialGymService api;
@@ -54,6 +55,7 @@ public class RegisterPresenter extends BasePresenter<RegisterMvpView> {
                 .email(email)
                 .password(password)
                 .build();
+        Timber.i(request.toString());
         api.register(request)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -65,14 +67,18 @@ public class RegisterPresenter extends BasePresenter<RegisterMvpView> {
 
                     @Override
                     public void onError(Throwable e) {
+                        Timber.e("something went wrong with the login request, and here is the error: %s", e.getMessage());
                         getMvpView().showError(e.getLocalizedMessage());
                     }
 
                     @Override
                     public void onNext(SimpleResponse simpleResponse) {
+                        Timber.i("server has returned the result");
                         if (simpleResponse.result().equals("success")) {
+                            Timber.i("success! trying to switch to login now");
                             getMvpView().proceedToLogin();
                         } else {
+                            Timber.e("fail! show user the registration error");
                             getMvpView().showError("Registration error");
                         }
                     }

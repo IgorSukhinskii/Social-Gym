@@ -10,13 +10,18 @@ import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
 import com.github.si1en7ium.socialgym.ui.base.BaseFragment;
 import com.github.si1en7ium.socialgym.ui.main.MainActivity;
 
-public class AuthenticationActivity extends BaseActivity {
+import javax.inject.Inject;
+
+public class AuthenticationActivity extends BaseActivity implements AuthenticationMvpView {
+    @Inject AuthenticationPresenter presenter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activityComponent().inject(this);
+        presenter.attachView(this);
+        presenter.checkUserToken();
         setContentView(R.layout.authentication_activity);
-
-        switchToFragment(EntryFragment.newInstance());
     }
 
     public void switchToFragment(BaseFragment fragment) {
@@ -27,9 +32,15 @@ public class AuthenticationActivity extends BaseActivity {
                 .commit();
     }
 
+    @Override
     public void goToMainScreen() {
         // switch activity to main
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void goToAuth() {
+        switchToFragment(EntryFragment.newInstance());
     }
 }
