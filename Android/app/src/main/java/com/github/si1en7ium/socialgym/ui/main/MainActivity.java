@@ -15,6 +15,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.github.si1en7ium.socialgym.R;
+import com.github.si1en7ium.socialgym.data.local.Preferences;
+import com.github.si1en7ium.socialgym.ui.authentication.AuthenticationActivity;
 import com.github.si1en7ium.socialgym.ui.base.BaseActivity;
 import com.github.si1en7ium.socialgym.ui.main.events.EventsFragment;
 import com.github.si1en7ium.socialgym.ui.main.my_events.MyEventsFragment;
@@ -46,6 +48,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     private static final String EXTRA_TRIGGER_SYNC_FLAG =
             "com.github.si1en7ium.socialgym.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
     @Inject MainPresenter mainPresenter;
+    @Inject Preferences prefs;
 
     @BindView(R.id.fab) FloatingActionButton fab;
     @BindView(R.id.toolbar) Toolbar toolbar;
@@ -125,7 +128,11 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         //switchToFragment(ProfileFragment.newInstance());
-                        fab.hide();
+                        prefs.setUserId(0);
+                        prefs.setUserToken("");
+                        // go to Login screen
+                        Intent intent = new Intent(MainActivity.this, AuthenticationActivity.class);
+                        startActivity(intent);
                         Timber.i("Clicked drawer item %1$d", position);
                         return false;
                     }

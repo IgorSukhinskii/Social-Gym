@@ -35,8 +35,8 @@ import retrofit2.http.POST;
 import rx.Observable;
 
 public interface SocialGymService {
-//    String ENDPOINT = "http://10.0.2.2:5000";
-    String ENDPOINT = "http://188.166.73.100:8080/";
+    String ENDPOINT = "http://10.0.2.2:5000";
+//    String ENDPOINT = "http://188.166.73.100:8080/";
 
     @POST("events/get")
     Observable<List<Event>> getEvents(@Body Authenticated<String> query);
